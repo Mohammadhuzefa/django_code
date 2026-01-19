@@ -1,0 +1,15 @@
+djengo env
+djengo project
+djengo app
+
+   2 cd .\env\Scripts\
+   3 .\activate
+   4 cd ../../
+   5 python .\project\
+   6 cd .\project\
+   7 python .\manage.py runsever
+   8 python manage.py runsever
+   9 python manage.py runserver
+  10 python manage.py migrate
+  11 python .\manage.py createsuperuser
+  12 python .\manage.py runserver
