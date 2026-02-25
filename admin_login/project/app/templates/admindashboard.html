@@ -1,0 +1,633 @@
+{% extends "Base.html" %}
+
+{% block title %}<title>Admin Dashboard</title>{% endblock title %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+    :root {
+        --sidebar-bg: #111827;
+        --action-panel-bg: #ffffff;
+        --main-bg: #f8fafc;
+        --accent: #4f46e5;
+        --text-dark: #1e293b;
+        --danger: #ef4444;
+        --success: #10b981;
+    }
+
+    body {
+        background-color: var(--main-bg);
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+    }
+
+    .dashboard-container {
+        display: flex;
+        height: 100vh;
+    }
+
+    /* 1. SLIM SIDEBAR (Leftmost) */
+    .nav-sidebar {
+        width: 80px;
+        background: var(--sidebar-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 25px;
+    }
+
+    .nav-icon {
+        color: #94a3b8;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .nav-icon:hover,
+    .nav-icon.active {
+        color: white;
+    }
+
+    /* 2. QUICK ACTIONS PANEL (Side Menu) */
+    .action-panel {
+        width: 280px;
+        background: var(--action-panel-bg);
+        border-right: 1px solid #e2e8f0;
+        padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .panel-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .action-item {
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+        background: #f1f5f9;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        transition: all 0.2s;
+        margin-bottom: 10px;
+    }
+
+    .action-item:hover {
+        background: #fff;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        transform: translateX(5px);
+    }
+
+    .action-item span {
+        margin-right: 12px;
+        font-size: 20px;
+    }
+
+    .logout-box {
+        background: #fef2f2;
+        color: var(--danger);
+        border: 1px solid #fee2e2;
+        margin-top: 10px;
+    }
+
+    .logout-box:hover {
+        background: var(--danger);
+        color: white;
+    }
+
+    /* 3. MAIN CONTENT AREA */
+    .main-content {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    /* Info Cards Style */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .info-card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .info-data h1 {
+        font-size: 42px;
+        color: var(--text-dark);
+        margin-top: 5px;
+    }
+
+    .info-data p {
+        color: #64748b;
+        font-weight: 500;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .info-icon-large {
+        width: 70px;
+        height: 70px;
+        background: #eef2ff;
+        color: var(--accent);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info-icon-large span {
+        font-size: 35px;
+    }
+
+    /* Table & List Styling */
+    .content-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .content-table th {
+        background: #f8fafc;
+        color: #64748b;
+        font-weight: 600;
+    }
+
+    /* Form Styling */
+    .form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        max-width: 800px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #475569;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    /* Buttons */
+    .btn-delete {
+        background: #fee2e2;
+        color: var(--danger);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .btn-delete:hover {
+        background: var(--danger);
+        color: white;
+    }
+
+    .status-paid {
+        color: var(--success);
+        font-weight: bold;
+    }
+
+    .status-pending {
+        color: #f59e0b;
+        font-weight: bold;
+    }
+</style>
+{% endblock css %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="nav-sidebar">
+        <a href="?" class="nav-icon"><span class="material-icons-outlined"
+                style="color: var(--accent); font-size: 35px;">grid_view</span></a>
+        <a href="?action=analytics" class="nav-icon"><span class="material-icons-outlined">analytics</span></a>
+        <a href="?action=settings" class="nav-icon"><span class="material-icons-outlined">settings</span></a>
+    </div>
+
+    <div class="action-panel">
+        <h4 class="panel-title">Management</h4>
+        <a href="?action=add_employee" class="action-item"><span class="material-icons-outlined">person_add</span> Add
+            Employee</a>
+        <a href="?action=all_employees" class="action-item"><span class="material-icons-outlined">groups</span> All
+            Employees</a>
+        <a href="?action=remove_employee" class="action-item" style="color: var(--danger);"><span
+                class="material-icons-outlined">person_remove</span> Remove Employee</a>
+        {% comment %} <a href="?action=add_department" class="action-item"><span class="material-icons-outlined">domain</span> Add
+            Department</a> {% endcomment %}
+            <a href={% url 'add_department' %} class="action-item"><span class="material-icons-outlined">domain</span> Add
+            Department</a>
+        <a href="?action=all_departments" class="action-item"><span class="material-icons-outlined">account_tree</span>
+            All Departments</a>
+        <a href="?action=all_queries" class="action-item"><span class="material-icons-outlined">account_tree</span> All
+            qruies</a>
+
+
+        <a href="{% url 'logout' %}" class="action-item logout-box">
+            <span class="material-icons-outlined">logout</span> Logout
+        </a>
+
+        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+        <h4 class="panel-title">Reports</h4>
+        <a href="?action=payroll" class="action-item"><span class="material-icons-outlined">payments</span> Payroll</a>
+    </div>
+
+    <main class="main-content">
+
+        {% if request.GET.action %}
+        <div style="margin-bottom: 20px;">
+            <a href="?"
+                style="text-decoration: none; color: var(--accent); font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                <span class="material-icons-outlined">arrow_back</span> Back to Dashboard
+            </a>
+        </div>
+        {% endif %}
+        {% if request.GET.action == "analytics" %}
+        <div class="form-card" style="max-width: 100%;">
+            <h2>Organization Analytics</h2>
+            <div
+                style="background: #f1f5f9; height: 300px; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px dashed #cbd5e1;">
+                <div style="text-align: center; color: #64748b;">
+                    <span class="material-icons-outlined" style="font-size: 48px;">bar_chart</span>
+                    <p>Growth and Attendance Charts will appear here.</p>
+                </div>
+            </div>
+        </div>
+        {% elif request.GET.action == "settings" %}
+        <div class="form-card">
+            <h2>Admin Settings</h2>
+            <form action="#" method="POST">
+                <div class="form-group"><label>Admin Username</label><input type="text" value="Admin_User"></div>
+                <div class="form-group"><label>Contact Email</label><input type="email" value="{{ data.email }}"></div>
+                <div class="form-group"><label>New Password</label><input type="password"
+                        placeholder="Leave blank to keep current"></div>
+                <button type="submit"
+                    style="background: var(--accent); color: white; border: none; padding: 15px 40px; border-radius: 10px; cursor: pointer; font-weight: bold;">Update
+                    Profile</button>
+            </form>
+        </div>
+
+        {% elif request.GET.action == "add_employee" %}
+        <div class="form-card">
+            <h2 style="margin-top: 0; margin-bottom: 30px;">Register New Employee</h2>
+            <form action="addemp" method="POST">
+                {% csrf_token %}
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-family: sans-serif; background: #fff; padding: 20px; border-radius: 8px;">
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">First
+                            Name</label><input type="text" name="fname" placeholder="John" required
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Last
+                            Name</label><input type="text" name="lname" placeholder="Doe" required
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Email
+                            Address</label><input type="email" name="email" placeholder="john@company.com" required
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Add
+                            Image</label><input type="file" accept="image/*" name="img" required
+                            style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; background:#f9f9f9;">
+                    </div>
+                      <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Add
+                            ADHAAR</label><input type="file" accept="image/*" name="adhaar" required
+                            style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; background:#f9f9f9;">
+                    </div>
+
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Employee
+                            ID</label><input type="text" name="code" placeholder="EMP-101"
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;">Mobile
+                            Number</label><input type="number" name="mobile" placeholder="9876543210"
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+                    
+                    <div class="form-group"><label style="display:block; margin-bottom:5px; font-weight:600;"> 
+                            DOB</label><input type="date" name="DOB" placeholder="9876543210"
+                            style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></div>
+
+                    <div style="grid-column: span 2;">
+                        <label style="display:block; margin-bottom:10px; font-weight:600;">Gender</label>
+                        <div style="display: flex; gap: 15px;">
+                            <label
+                                style="padding: 10px 20px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; background: #fafafa;">
+                                <input type="radio" name="gender" value="male" style="accent-color: #007bff;"> Male
+                            </label>
+                            <label
+                                style="padding: 10px 20px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; background: #fafafa;">
+                                <input type="radio" name="gender" value="female" style="accent-color: #007bff;"> Female
+                            </label>
+                            <label
+                                style="padding: 10px 20px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; background: #fafafa;">
+                                <input type="radio" name="gender" value="others" style="accent-color: #007bff;"> Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label style="display:block; margin-bottom:10px; font-weight:600;">Education
+                            Qualification</label>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; background: #f4f7f6; padding: 15px; border-radius: 8px;">
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                <input type="checkbox" name="edu" value="matric"
+                                    style="width:18px; height:18px; accent-color: #28a745;"> Matric / O-Level
+                            </label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                <input type="checkbox" name="edu" value="inter"
+                                    style="width:18px; height:18px; accent-color: #28a745;"> Intermediate / A-Level
+                            </label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                <input type="checkbox" name="edu" value="grad"
+                                    style="width:18px; height:18px; accent-color: #28a745;"> Graduate
+                            </label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                <input type="checkbox" name="edu" value="postgrad"
+                                    style="width:18px; height:18px; accent-color: #28a745;"> Post-Graduate
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group"><label>Department</label>
+                    <select name="dept">
+                        <option value="IT">IT Department</option>
+                        <option value="HR">HR Department</option>
+                        <option value="R&D">R&D Department</option>
+                        <option value="ACC">ACC Department</option>
+                    </select>
+                </div>
+                       <button type="submit"
+            style="background: var(--accent); color: white; border: none; padding: 15px 40px; border-radius: 10px; cursor: pointer; font-weight: bold;">Save
+            Employee</button>
+        </div>
+ 
+        </form>
+</div>
+
+{% elif request.GET.action == "all_employees" %}
+<div class="form-card" style="max-width: 100%;">
+    <h2>All Employees</h2>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rajesh Kumar</td>
+                <td>rajesh@hr.com</td>
+                <td>HR</td>
+                <td>Manager</td>
+            </tr>
+            <tr>
+                <td>Suresh Singh</td>
+                <td>suresh@it.com</td>
+                <td>IT</td>
+                <td>Developer</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% elif request.GET.action == "remove_employee" %}
+<div class="form-card" style="max-width: 100%;">
+    <h2 style="color: var(--danger);">Remove Employee</h2>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rajesh Kumar</td>
+                <td>rajesh@hr.com</td>
+                <td>HR</td>
+                <td><button class="btn-delete">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% elif request.GET.action == "payroll" %}
+<div class="form-card" style="max-width: 100%;">
+    <h2>Payroll Management</h2>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Base Salary</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rajesh Kumar</td>
+                <td>$4,500</td>
+                <td><span class="status-paid">Paid</span></td>
+                <td><button style="border: 1px solid #ddd; padding: 5px 10px; border-radius: 5px;">Slip</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% comment %} {% elif request.GET.action == "add_department" %} {% endcomment %}
+{% elif  "add_department" %}
+
+ <form action="save_department" method="POST" style="max-width: 800px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
+    {% csrf_token %}
+    <h2 style="margin-bottom: 20px; color: #333; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Add New Department</h2>
+        <p style="color:red;">{{d.d}}</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        
+        <div class="form-group">
+            <label style="display:block; margin-bottom:5px; font-weight:600; color: #555;">Department Name</label>
+            <input type="text" name="dept_name" placeholder="e.g. Sales, IT, HR" required 
+                   style="width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; box-sizing: border-box; outline: none; transition: border 0.3s;">
+        </div>
+
+        <div class="form-group">
+            <label style="display:block; margin-bottom:5px; font-weight:600; color: #555;">Dept. Short Code</label>
+            <input type="text" name="dept_code" placeholder="e.g. IT-01" 
+                   style="width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; box-sizing: border-box;">
+        </div>
+
+        <div class="form-group">
+            <label style="display:block; margin-bottom:5px; font-weight:600; color: #555;">Department Head (HOD)</label>
+            <select name="dept_head" style="width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; background: white; cursor: pointer;">
+                <option value="">Select Manager</option>
+                <option value="jatin">jatin</option>
+                <option value="manish">manish</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label style="display:block; margin-bottom:5px; font-weight:600; color: #555;">Annual Budget ($)</label>
+            <input type="number" name="dept_budget" placeholder="Enter Amount" 
+                   style="width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; box-sizing: border-box;">
+        </div>
+
+        <div style="grid-column: span 2;">
+            <label style="display:block; margin-bottom:5px; font-weight:600; color: #555;">Description</label>
+            <textarea name="dept_desc" placeholder="Briefly describe department roles..." rows="3"
+                      style="width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; resize: vertical; box-sizing: border-box;"></textarea>
+        </div>
+
+      
+
+        <div style="grid-column: span 2; text-align: right; margin-top: 10px;">
+            <button type="submit"
+                style="background: #4A90E2; color: white; border: none; padding: 15px 40px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 6px rgba(74, 144, 226, 0.2);">
+                Save Department
+            </button>
+        </div>
+    </div>
+</form>
+{% elif request.GET.action == "all_departments" %}
+<div class="form-card" style="max-width: 100%;">
+    <h2>All Departments</h2>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Dept Name</th>
+                <th>HOD</th>
+                <th>Total Staff</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>IT Department</td>
+                <td>Amit Sharma</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% elif request.GET.action == "all_queries" %}
+<div class="form-card" style="max-width: 100%;">
+    <h2>All Departments</h2>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>queries Name</th>
+                <th>HOD</th>
+                <th>Total complain</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>IT Department</td>
+                <td>Amit Sharma</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% else %}
+<div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <h2 style="color: var(--text-dark); margin: 0;">Admin Dashboard</h2>
+        <p style="color: #64748b; margin: 5px 0 0 0;">Logged in as: <b>{{ data.email }}</b></p>
+    </div>
+</div>
+
+<div class="info-grid">
+    <div class="info-card">
+        <div class="info-data">
+            <p>Total Employees</p>
+            <h1>452</h1>
+        </div>
+        <div class="info-icon-large"><span class="material-icons-outlined">badge</span></div>
+    </div>
+    <div class="info-card">
+        <div class="info-data">
+            <p>Total Departments</p>
+            <h1>12</h1>
+        </div>
+        <div class="info-icon-large" style="background: #fff7ed; color: #f59e0b;"><span
+                class="material-icons-outlined">account_tree</span></div>
+    </div>
+    <div class="info-card">
+        <div class="info-data">
+            <p>On Leave Today</p>
+            <h1>08</h1>
+        </div>
+        <div class="info-icon-large" style="background: #fef2f2; color: #ef4444;"><span
+                class="material-icons-outlined">event_busy</span></div>
+    </div>
+    <div class="info-card">
+        <div class="info-data">
+            <p>Pending Tasks</p>
+            <h1>15</h1>
+        </div>
+        <div class="info-icon-large" style="background: #ecfdf5; color: #10b981;"><span
+                class="material-icons-outlined">pending_actions</span></div>
+    </div>
+</div>
+{% endif %}
+
+</main>
+</div>
+
+{% endblock content %}
