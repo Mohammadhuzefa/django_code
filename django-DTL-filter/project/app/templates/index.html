@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Information Form</title>
+</head>
+<body>
+
+    <h2>User Information Form</h2>
+
+    <form action="{% url 'data' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+        <!-- Name -->
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <!-- Email -->
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <!-- Contact -->
+        <label>Contact:</label><br>
+        <input type="tel" name="contact" required><br><br>
+
+        <!-- City -->
+        <label>City:</label><br>
+        <select name="city">
+            <option value="Bhopal">Bhopal</option>
+            <option value="Indore">Indore</option>
+            <option value="Gwalior">Gwalior</option>
+        </select><br><br>
+
+        <!-- Gender -->
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male"> Male<br>
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        <!-- Education -->
+        <label>Education:</label><br>
+        <select name="education">
+            <option value="10th">10th</option>
+            <option value="12th">12th</option>
+            <option value="UG">UG</option>
+            <option value="PG">PG</option>
+        </select><br><br>
+
+        <!-- Profile Pic -->
+        <label>Profile Picture:</label><br>
+        <input type="file" name="profile_pic" accept="image/*"><br><br>
+
+        <!-- Audio Clip -->
+        <label>Audio Clip:</label><br>
+        <input type="file" name="audio_clip" accept="audio/*"><br><br>
+
+        <!-- Video Clip -->
+        <label>Video Clip:</label><br>
+        <input type="file" name="video_clip" accept="video/*"><br><br>
+
+        <!-- Document -->
+        <label>Document:</label><br>
+        <input type="file" name="document"><br><br>
+
+        <!-- Description -->
+        <label>Description:</label><br>
+        <textarea name="description" rows="4" cols="30"></textarea><br><br>
+
+        <!-- Submit -->
+        <input type="submit" value="Submit">
+
+    </form>
+
+</body>
+</html>
