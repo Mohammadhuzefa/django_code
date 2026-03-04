@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgray;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">Student & Aadhar Data</h1>
+
+    <!-- Forward Access Table -->
+    <h2>Forward Access (Student → Aadhar)</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>City</th>
+            <th>Aadhar No</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+        </tr>
+
+        {% for i in students %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.contact }}</td>
+            <td>{{ i.city }}</td>
+            <td>{{ i.a_no.aadhar_no }}</td>
+            <td>{{ i.a_no.created_data }}</td>
+            <td>{{ i.a_no.created_by }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <!-- Reverse Access Table -->
+    <h2>Reverse Access (Aadhar → Student)</h2>
+
+    <table>
+        <tr>
+            <th>Aadhar No</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>City</th>
+        </tr>
+
+        {% for i in aadhars %}
+        <tr>
+            <td>{{ i.aadhar_no }}</td>
+            <td>{{ i.created_data }}</td>
+            <td>{{ i.created_by }}</td>
+            <td>{{ i.student.name }}</td>
+            <td>{{ i.student.email }}</td>
+            <td>{{ i.student.contact }}</td>
+            <td>{{ i.student.city }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
