@@ -1,0 +1,711 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block title %}
+  
+  <title>Mamaearth Header Clone</title>
+  {% endblock title %}
+  <link rel="stylesheet" href="base.css">
+  {% block css %}
+  
+  <style>
+    
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* TOP OFFER BAR */
+.top-bar {
+  background: #f44336;
+  color: white;
+  font-size: 14px;
+  padding: 8px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MAIN HEADER */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  border-bottom: 1px solid #ddd;
+  background: white;
+}
+
+/* LOGO */
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00a3e0;
+}
+
+.logo span {
+  color: #8dc63f;
+}
+
+/* SEARCH BAR */
+.search-box {
+  display: flex;
+  width: 45%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box button {
+  background: #00a3e0;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* HEADER ICONS */
+.header-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* NAV BAR */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 14px 10px;
+  border-bottom: 1px solid #ddd;
+  background: white;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navbar a:hover {
+  color: #00a3e0;
+}
+
+/* BEST SELLERS SECTION */
+.best-sellers {
+  padding: 60px 80px;
+  background: #fff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  max-width: 700px;
+  color: #444;
+  font-size: 16px;
+}
+
+.view-btn {
+  background: #00a3e0;
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  background: white;
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  color: white;
+}
+
+.badge.red { background: #ff4d58; }
+.badge.green { background: #7ac943; }
+
+/* TEXT */
+.product-card h3 {
+  font-size: 16px;
+  margin: 12px 0;
+  min-height: 46px;
+}
+
+.desc {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.green {
+  color: #7ac943;
+}
+
+.size {
+  font-size: 14px;
+  color: #555;
+}
+
+.rating {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* PRICE */
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.price .old {
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 6px;
+  font-weight: normal;
+}
+
+.price .off {
+  color: #7ac943;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+/* BUTTON */
+.add-btn {
+  width: 100%;
+  padding: 18px;
+  background: #00a3e0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .best-sellers {
+    padding: 40px 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.lightning-sale {
+  padding: 50px 60px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.sale-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sale-header h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.sale-header p {
+  color: #555;
+  font-size: 15px;
+}
+
+.view-all {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* PRODUCT GRID */
+.sale-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.sale-card {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.sale-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.sale-card img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.timer {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #8e2de2;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.sale-card h3 {
+  font-size: 17px;
+  margin: 15px 0 6px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #4caf50;
+  margin-bottom: 6px;
+}
+
+.size {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.rating {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.rating span {
+  color: #777;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.price .new {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.price .off {
+  background: #b7f397;
+  padding: 4px 7px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.cart-btn {
+  width: 100%;
+  background: #00a3e0;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .sale-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sale-container {
+    grid-template-columns: 1fr;
+  }
+
+  .lightning-sale {
+    padding: 30px 20px;
+  }
+}
+
+.footer {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* TOP SERVICES */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  border-bottom: 1px solid #eee;
+}
+
+.service-box {
+  text-align: center;
+  flex: 1;
+}
+
+.service-box img {
+  width: 40px;
+  margin-bottom: 8px;
+}
+
+.service-box h4 {
+  margin: 5px 0;
+}
+
+.service-box p {
+  color: #777;
+  font-size: 14px;
+}
+
+.service-box.right {
+  text-align: right;
+}
+
+.service-box button {
+  background: white;
+  color: #00aaff;
+  border: 2px solid #00aaff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* PAYMENT */
+.payment {
+  padding: 25px 60px;
+}
+
+.payment p {
+  color: green;
+}
+
+.pay-img {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* LINKS */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 40px 60px;
+  gap: 30px;
+  border-top: 1px solid #eee;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.footer-links a:hover {
+  color: #00aaff;
+}
+
+.award {
+  width: 170px;
+}
+
+/* SOCIAL */
+.social {
+  text-align: center;
+  padding: 20px;
+}
+
+.social img {
+  width: 30px;
+  margin: 0 8px;
+}
+
+/* APPS */
+.apps {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.apps img {
+  height: 45px;
+  margin: 0 10px;
+}
+
+/* COPYRIGHT */
+.copyright {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:900px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .payment,
+  .footer-top {
+    padding: 20px;
+  }
+}
+
+
+  </style>
+  {% endblock css %}
+</head>
+<body>
+{% block contant %}
+
+  <!-- TOP OFFER BAR -->
+  <div class="top-bar">
+  <marquee behavior="" direction=""></marquee>
+    <span>Asia's 1st Brand with MADE SAFE Certified Products</span>
+    <span>Buy Any 3 Favorites & Pay for 2 | Use Code B3P2 | <b>Shop Now</b></span>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="main-header">
+
+    <!-- LOGO -->
+    <div class="logo">
+      mama<span>earth</span>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+      <input type="text" placeholder="Search for Ubtan">
+      <button>🔍 Search</button>
+    </div>
+
+    <!-- ICONS -->
+    <div class="header-icons">
+      <div>🛒 Cart</div>
+      <div>👤 Login</div>
+    </div>
+
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="#">FACE</a>
+    <a href="#">HAIR</a>
+    <a href="#">MAKEUP</a>
+    <a href="#">BODY</a>
+    <a href="#">BABY</a>
+    <a href="#">COMBOS</a>
+    <a href="#">NEW LAUNCHES</a>
+    <a href="#">INGREDIENT</a>
+    <a href="#">ALL PRODUCTS</a>
+    <a href="#">BLOG</a>
+    <a href="#">PLANT GOODNESS</a>
+    <a href="#">STORE LOCATOR</a>
+  </nav>
+
+
+<footer class="footer">
+
+  <!-- TOP SERVICES -->
+  <div class="footer-top">
+    <div class="service-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png">
+      <h4>Free Shipping</h4>
+      <p>On Orders Above ₹399</p>
+    </div>
+
+    <div class="service-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+      <h4>COD Available</h4>
+      <p>@ ₹40 Per Order</p>
+    </div>
+
+    <div class="service-box right">
+      <h3>Have Queries or Concerns?</h3>
+      <button>CONTACT US</button>
+    </div>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="payment">
+    <h4>PAYMENT</h4>
+    <p>100% Payment Protection, Easy Return Policy</p>
+    <img src="" class="pay-img">
+  </div>
+
+  <!-- LINKS -->
+  <div class="footer-links">
+
+    <div>
+      <h4>USEFUL LINKS</h4>
+      <a>Privacy Policy</a>
+      <a>Returns</a>
+      <a>Terms & Conditions</a>
+      <a>Cashback Terms</a>
+      <a>We're Safe</a>
+      <a>Track Order</a>
+      <a>Contact Us</a>
+      <a>Sitemap</a>
+      <a>About Us</a>
+    </div>
+
+    <div>
+      <h4>CATEGORIES</h4>
+      <a>Baby</a>
+      <a>Beauty</a>
+      <a>Hair</a>
+      <a>Face</a>
+      <a>Body</a>
+      <a>Makeup</a>
+      <a>Ingredient</a>
+      <a>Gift Pack</a>
+    </div>
+
+    <div>
+      <h4>MY ACCOUNT</h4>
+      <a>Account</a>
+      <a>Orders</a>
+      <a>Addresses</a>
+    </div>
+
+    <div>
+      <img src="" class="award">
+    </div>
+
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+  </div>
+
+  <!-- APP BUTTONS -->
+  <div class="apps">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="copyright">
+    © 2025 Honasa Consumer Limited. All Rights Reserved
+  </div>
+
+</footer>
+
+
+
+{% endblock contant %}
+
+
+
+</body>
+</html>

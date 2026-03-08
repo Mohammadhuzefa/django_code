@@ -1,0 +1,641 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+  <title>Mamaearth Home Page</title>
+{% endblock title %}
+
+
+{% block css %}
+
+<style>
+/* BEST SELLERS SECTION */
+.best-sellers {
+  padding: 60px 80px;
+  background: #fff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  max-width: 700px;
+  color: #444;
+  font-size: 16px;
+}
+
+.view-btn {
+  background: #00a3e0;
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  background: white;
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  color: white;
+}
+
+.badge.red { background: #ff4d58; }
+.badge.green { background: #7ac943; }
+
+/* TEXT */
+.product-card h3 {
+  font-size: 16px;
+  margin: 12px 0;
+  min-height: 46px;
+}
+
+.desc {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.green {
+  color: #7ac943;
+}
+
+.size {
+  font-size: 14px;
+  color: #555;
+}
+
+.rating {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* PRICE */
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.price .old {
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 6px;
+  font-weight: normal;
+}
+
+.price .off {
+  color: #7ac943;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+/* BUTTON */
+.add-btn {
+  width: 100%;
+  padding: 18px;
+  background: #00a3e0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .best-sellers {
+    padding: 40px 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.lightning-sale {
+  padding: 50px 60px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.sale-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sale-header h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.sale-header p {
+  color: #555;
+  font-size: 15px;
+}
+
+.view-all {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* PRODUCT GRID */
+.sale-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.sale-card {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.sale-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.sale-card img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.timer {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #8e2de2;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.sale-card h3 {
+  font-size: 17px;
+  margin: 15px 0 6px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #4caf50;
+  margin-bottom: 6px;
+}
+
+.size {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.rating {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.rating span {
+  color: #777;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.price .new {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.price .off {
+  background: #b7f397;
+  padding: 4px 7px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.cart-btn {
+  width: 100%;
+  background: #00a3e0;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .sale-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sale-container {
+    grid-template-columns: 1fr;
+  }
+
+  .lightning-sale {
+    padding: 30px 20px;
+  }
+}
+
+.footer {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* TOP SERVICES */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  border-bottom: 1px solid #eee;
+}
+
+.service-box {
+  text-align: center;
+  flex: 1;
+}
+
+.service-box img {
+  width: 40px;
+  margin-bottom: 8px;
+}
+
+.service-box h4 {
+  margin: 5px 0;
+}
+
+.service-box p {
+  color: #777;
+  font-size: 14px;
+}
+
+.service-box.right {
+  text-align: right;
+}
+
+.service-box button {
+  background: white;
+  color: #00aaff;
+  border: 2px solid #00aaff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* PAYMENT */
+.payment {
+  padding: 25px 60px;
+}
+
+.payment p {
+  color: green;
+}
+
+.pay-img {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* LINKS */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 40px 60px;
+  gap: 30px;
+  border-top: 1px solid #eee;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.footer-links a:hover {
+  color: #00aaff;
+}
+
+.award {
+  width: 170px;
+}
+
+/* SOCIAL */
+.social {
+  text-align: center;
+  padding: 20px;
+}
+
+.social img {
+  width: 30px;
+  margin: 0 8px;
+}
+
+/* APPS */
+.apps {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.apps img {
+  height: 45px;
+  margin: 0 10px;
+}
+
+/* COPYRIGHT */
+.copyright {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:900px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .payment,
+  .footer-top {
+    padding: 20px;
+  }
+}
+
+
+  </style>
+
+{% endblock css %}
+
+</head>
+<body>
+
+{% block contant %}
+
+  
+
+  
+<!-- BEST SELLERS SECTION -->
+<section class="best-sellers">
+
+  <div class="section-header">
+    <div>
+      <h2>Best Sellers</h2>
+      <p>
+        Explore best-selling safe, natural, and 100% toxin-free baby and beauty products from Mamaearth.
+        Get amazing deals and start your toxin-free skin, hair, and baby care journey.
+      </p>
+    </div>
+    <button class="view-btn">VIEW ALL</button>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card">
+      <span class="badge red">BEST SELLER</span>
+      <img src="{% static 'image/Best Sellers1.avif' %}" alt="">
+      <h3>Ubtan Natural Glow Face Wash with Turmeric & Saffron for Tan...</h3>
+      <p class="desc green">Removes Tan | Brightens Skin</p>
+      <br>
+      <p class="size">200ml</p>
+      <p class="rating">⭐ 4.9 &nbsp; 🔵 170 Reviews</p>
+      <div class="price">
+        ₹411 <span class="old">₹549</span> <span class="off">25% off</span>
+      </div>
+      <button class="add-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card">
+      <span class="badge red">BEST SELLER</span>
+      <img src="{% static 'image/Best Sellers2.avif' %}" alt="">
+      <h3>Rice Dewy Bright Face Wash With Rice Water & Niacinamide for Gla...</h3>
+      <p class="desc green">Gently Cleanses Skin | Hydrates Skin</p>
+      <br>
+      <p class="size">200ml</p>
+      <p class="rating">⭐ 4.8 &nbsp; 🔵 93 Reviews</p>
+      <div class="price">
+        ₹411 <span class="old">₹549</span> <span class="off">25% off</span>
+      </div>
+      <button class="add-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card">
+      <span class="badge green">MOST LOVED SUNSCREEN</span>
+      <img src="{% static 'image/Best Sellers3.avif' %}" alt="">
+      <h3>Mamaearth Vitamin C Daily Glow Sunscreen SPF 50 PA++++ – In-Viv...</h3>
+      <p class="desc green">SPF 50 & PA++++ Protection | Adds Natural Glow</p>
+      <p class="size">50g</p>
+      <p class="rating">⭐ 5.0 &nbsp; 🔵 261 Reviews</p>
+      <div class="price">
+        ₹286 <span class="old">₹349</span> <span class="off">18% off</span>
+      </div>
+      <button class="add-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="product-card">
+      <span class="badge red">BEST SELLER</span>
+      <img src="{% static 'image/Best Sellers4.avif' %}" alt="">
+      <h3>Vitamin C Daily Glow Face Serum With Vitamin C & Turmeric for...</h3>
+      <p class="desc green">Enriched with 50X Vitamin C | Brightens Skin</p>
+      <p class="size">30ml</p>
+      <p class="rating">⭐ 4.9 &nbsp; 🔵 151 Reviews</p>
+      <div class="price">
+        ₹327 <span class="old">₹399</span> <span class="off">18% off</span>
+      </div>
+      <button class="add-btn">ADD TO CART</button>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="lightning-sale">
+
+  <div class="sale-header">
+    <div>
+      <h2>Lightning sale</h2>
+      <p>Explore the goodness of nature from Mamaearth. Take a look at our lightning offers</p>
+    </div>
+    <button class="view-all">VIEW ALL</button>
+  </div>
+
+  <div class="sale-container">
+
+    <!-- PRODUCT 1 -->
+    <div class="sale-card">
+      <span class="timer">⚡ 11h 56m 53s</span>
+      <img src="{% static 'image/Lightning sale1.avif' %}" alt="">
+      <h3>Ubtan Detan Sunscreen With Turmeric & Saffron</h3>
+      <p class="desc">SPF 50 & PA++++ Protection | Removes Tan | Brightens Skin</p>
+      <p class="size">50g</p>
+      <p class="rating">⭐ 4.5 <span>39 Reviews</span></p>
+      <br>
+      <div class="price">
+        <span class="new">₹200</span>
+        <span class="old">₹399</span>
+        <span class="off">50% off</span>
+      </div>
+      <button class="cart-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="sale-card">
+      <span class="timer">⚡ 11h 56m 53s</span>
+      <img src="{% static 'image/Lightning sale2.avif' %}" alt="">
+      <h3>Aloe Vera Moisturizing Body Wash with Aloe Vera & Calming Jasmine</h3>
+      <p class="desc">Deeply Cleanses | Intensely Moisturizes | Long Lasting Fragrance</p>
+      <p class="size">275ml</p>
+      <p class="rating">⭐ 4.6 <span>33 Reviews</span></p>
+      <br>
+      <div class="price">
+        <span class="new">₹150</span>
+        <span class="old">₹299</span>
+        <span class="off">50% off</span>
+      </div>
+      <button class="cart-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="sale-card">
+      <span class="timer">⚡ 11h 56m 53s</span>
+      <img src="{% static 'image/Lightning sale3.avif' %}" alt="">
+      <h3>Chia Oil Free Combo</h3>
+      <br>
+      <p class="desc">Oil-Free Formula for Normal to Oily Skin | Co-created with Top Dermats | For Tan...</p>
+      <p class="size">150g</p>
+      <p class="rating">⭐ 4.8 <span>48 Reviews</span></p>
+      <br>
+      <div class="price">
+        <span class="new">₹334</span>
+        <span class="old">₹668</span>
+        <span class="off">50% off</span>
+      </div>
+      <button class="cart-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="sale-card">
+      <span class="timer">⚡ 11h 56m 53s</span>
+      <img src="{% static 'image/Lightning sale4.avif' %}" alt="">
+      <h3>Lemon Anti-Dandruff Shampoo with Lemon & Ginger for up to... </h3>
+      <p class="desc">Reduces Up to 100% Dandruff | Soothes Itchiness</p>
+      <p class="size">400ml</p>
+      <p class="rating">⭐ 5.0 <span>13 Reviews</span></p>
+      <br>
+      <div class="price">
+        <span class="new">₹399</span>
+        <span class="old">₹533</span>
+        <span class="off">25% off</span>
+      </div>
+      <button class="cart-btn">ADD TO CART</button>
+    </div>
+
+  </div>
+</section>
+{% endblock contant %}
+
+</body>
+</html>
