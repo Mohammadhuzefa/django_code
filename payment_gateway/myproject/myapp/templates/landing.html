@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Product Form</h2>
+
+    <form action="{% url 'add_to_cart'  %}" method="POST">
+    {% csrf_token %}
+        <!-- Name -->
+        <label>Product Name</label>
+        <input type="text" name="name" placeholder="Enter product name" required>
+
+        <!-- Description -->
+        <label>Description</label>
+        <textarea name="description" placeholder="Enter description"></textarea>
+
+        <!-- Color -->
+        <label>Color</label>
+        <input type="text" name="color" placeholder="Enter color">
+
+        <!-- Quantity -->
+        <label>Quantity</label>
+        <input type="number" name="quantity" placeholder="Enter quantity" required>
+
+        <!-- Price -->
+        <label>Price</label>
+        <input type="number" name="price" placeholder="Enter price" required>
+
+        <!-- Category -->
+        <label>Category</label>
+        <select name="category">
+            <option value="">Select Category</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="food">Food</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<button><a href={% url 'show'  %}>show my cart</a></button>
+
+
+</body>
+</html>
