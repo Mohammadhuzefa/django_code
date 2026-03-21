@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+
+    {{data.name|upper}}
+    <br>
+    {{data.class|lower}}
+    <br>
+    {{data.city|capfirst}}
+    <br>
+    {{data.p|title}}
+    <br>
+    {{data.p|truncatechars:5}}
+    <br>
+    {{data.p2|truncatewords:2}}
+    <br>
+    {{data.p2|wordcount}}
+    <br>
+    {{data.p2|length}}
+    <br>
+<pre>
+    {{data.p2|center:'50'}}
+</pre>
+
+<pre>
+    {{data.p2|ljust:'50'}}
+</pre>
+<pre>
+    {{data.p2|rjust:'50'}}
+</pre>
+
+    {{data.p2|slice:"::2"}}
+    <br>
+    {{data.p2|slice:":10"}}
+    <br>
+    {{data.na|default:'guest'}}
+    <br>
+    {{data.p2|cut:" "}}
+    <br>
+    {{data.p2|cut:'i'}}
+    <br>
+    {{data.l|join:"-"}}
+    <br>
+    {{data.p2|join:" "}}
+
+    
+
+<br>
+    <h1>dtl tags</h1>
+
+    {% if data %}
+    all data are :{{data}}     
+    {% endif %}
+
+ 
+    
+ <br>
+
+ {% if data.l2 %}
+  {% for i in data.l2 %}
+
+    {{i}}
+  
+  {% endfor %}
+ {% endif %}
+
+{% block content %}
+
+{% endblock content %}
+
+
+
+
+
+  {% with local_var='jatin' %}
+{{local_var}}
+{{local_var}}
+{% endwith %}
+
+{{local_var}}
+
+ </body>
+ </html>
