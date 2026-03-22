@@ -1,0 +1,4 @@
+<form action="{% url 'resetp' %}" method="post">
+{% csrf_token %}
+    email:<input type="submit" value="reset pass">
+</form>
