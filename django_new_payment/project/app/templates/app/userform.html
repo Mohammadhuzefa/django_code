@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Home Page</title>
+
+<style>
+body {
+    background: linear-gradient(135deg, #141e30, #243b55);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/* Glass Card */
+.glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Header */
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Form Inputs */
+.form-control {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+}
+
+/* Buttons */
+.btn-gradient {
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    border: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-gradient:hover {
+    transform: scale(1.05);
+}
+
+/* Cart Button */
+.btn-outline-custom {
+    border: 1px solid #00c6ff;
+    color: #00c6ff;
+}
+
+.btn-outline-custom:hover {
+    background: #00c6ff;
+    color: black;
+}
+
+/* Product Card */
+.product-card {
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Price */
+.price {
+    color: #00ffd5;
+    font-weight: bold;
+}
+
+/* Quantity Input */
+input[type="number"] {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+}
+
+/* Add to Cart Button */
+.cart-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+}
+
+.cart-btn:hover {
+    transform: scale(1.05);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-4">
+
+  <!-- FORM SECTION -->
+  <div class="card glass shadow mb-4">
+    <div class="card-header text-center">
+      <h3>✨ Item Detail Form</h3>
+    </div>
+
+    <div class="card-body">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="text-center">
+          <button class="btn btn-gradient px-4">Submit</button>
+        </div>
+      </form>
+
+      <div class="text-center mt-3">
+        <a href="{% url 'cart' %}" class="btn btn-outline-custom">
+          🛒 Go to Cart
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEMS GRID -->
+  <div class="row g-4">
+    {% for i in data %}
+    <div class="col-md-4 col-sm-6">
+
+      <div class="card glass product-card h-100">
+
+        <img src="{{ i.item_image.url }}" 
+             class="card-img-top" 
+             style="height:200px; object-fit:cover;" 
+             alt="item image">
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ i.item_name }}</h5>
+          <p class="card-text text-light">{{ i.item_desc }}</p>
+
+          <h6 class="price">₹ {{ i.item_price }}</h6>
+
+          <form action="{% url 'addtocard' pk=i.id %}" method="post" class="mt-auto">
+            {% csrf_token %}
+
+            <div class="mb-2">
+              <label class="form-label">Quantity</label>
+              <input type="number" name="quantity" value="1" class="form-control">
+            </div>
+
+            <button class="btn cart-btn w-100">Add to Cart</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

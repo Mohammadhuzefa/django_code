@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cart</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Layout */
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Cards */
+.card {
+    display: flex;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 15px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image */
+.card img {
+    width: 140px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Details */
+.details {
+    margin-left: 15px;
+    flex: 1;
+}
+
+.details h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.desc {
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* Price */
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-right: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Buy */
+.buy {
+    background: linear-gradient(45deg, #ff7b00, #ffb347);
+    color: white;
+}
+
+/* Delete */
+.delete {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+}
+
+/* Summary */
+.summary {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* Total */
+.total {
+    font-size: 28px;
+    color: #00ffcc;
+    margin: 15px 0;
+}
+
+/* Pay Button */
+.pay {
+    width: 100%;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+/* Hover Effects */
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">CART</div>
+
+<div class="container">
+
+    <!-- ITEMS -->
+    <div class="items">
+
+        {% for i in key %}
+        <div class="card">
+
+            <img src="{{i.item_image.url}}" alt="">
+
+            <div class="details">
+                <h3>{{i.item_name}}</h3>
+                <p class="desc">{{i.item_desc}}</p>
+
+                <p class="price">₹ {{i.item_price}}</p>
+                <p>Qty: {{i.item_quantity}}</p>
+
+                <form action="" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="btn buy">Buy Now</button>
+                </form>
+
+                <a href="{% url 'deletecart' pk=i.id %}" class="btn delete">Remove</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+
+        <h2>Order Summary</h2>
+
+        <p>Total Amount</p>
+        <div class="total">₹ {{amount}}</div>
+
+        <form action="{% url 'payment' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="amount" value="{{amount}}">
+            <button class="btn pay">Proceed to Pay</button>
+        </form>
+
+        {% if payment %}
+        <form action="{% url 'payment-status' %}" method="post">
+            {% csrf_token %}
+            <script
+                src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_test_pr99iascS1WRtU"
+                data-amount="{{ payment.amount }}"
+                data-currency="{{ payment.currency }}"
+                data-order_id="{{ payment.id }}"
+                data-buttontext="Pay with Razorpay"
+                data-name="ELECS ECOM"
+                data-description="Secure Payment"
+                data-theme.color="#6a11cb"
+            ></script>
+        </form>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

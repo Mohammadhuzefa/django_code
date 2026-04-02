@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #00ffd5; }
+    50% { box-shadow: 0 0 20px #00ffd5; }
+    100% { box-shadow: 0 0 5px #00ffd5; }
+}
+
+/* Payment Card */
+.payment-box {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(18px);
+    padding: 45px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 340px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: fadeIn 0.8s ease;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Title */
+.payment-box h2 {
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+/* Subtitle */
+.small {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Amount */
+.amount {
+    font-size: 36px;
+    margin: 25px 0;
+    color: #00ffd5;
+    font-weight: bold;
+    animation: glow 2s infinite;
+}
+
+/* Button */
+.pay-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff512f, #dd2476, #6a11cb);
+    background-size: 200%;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+/* Button Animation */
+.pay-btn:hover {
+    background-position: right;
+    transform: scale(1.06);
+    box-shadow: 0 8px 25px rgba(221, 36, 118, 0.5);
+}
+
+/* Footer Note */
+.footer {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #888;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-box">
+
+    <h2>💳 Secure Checkout</h2>
+    <p class="small">Fast • Safe • Trusted</p>
+
+    <div class="amount">₹ {{amount}}</div>
+
+    <button id="rzp-button1" class="pay-btn">
+        Pay Securely
+    </button>
+
+    <div class="footer">Powered by Razorpay</div>
+
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "rzp_test_pr99iascS1WRtU",
+    "amount": "{{amount}}",
+    "currency": "INR",
+    "name": "Neeraj Ecom",
+    "description": "Order Payment",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{ id }}",
+    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+
+    "prefill": {
+        "name": "Customer Name",
+        "email": "customer@email.com",
+        "contact": "9999999999"
+    },
+
+    "notes": {
+        "address": "India"
+    },
+
+    "theme": {
+        "color": "#6a11cb"
+    }
+};
+
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

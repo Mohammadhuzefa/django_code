@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment Status</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* Card */
+.status-box {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(18px);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: fadeIn 0.7s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Icons */
+.success-icon {
+    font-size: 80px;
+    color: #00ff9f;
+    animation: glowSuccess 2s infinite;
+}
+
+.fail-icon {
+    font-size: 80px;
+    color: #ff4b5c;
+    animation: glowFail 2s infinite;
+}
+
+/* Glow animations */
+@keyframes glowSuccess {
+    0% { text-shadow: 0 0 10px #00ff9f; }
+    50% { text-shadow: 0 0 25px #00ff9f; }
+    100% { text-shadow: 0 0 10px #00ff9f; }
+}
+
+@keyframes glowFail {
+    0% { text-shadow: 0 0 10px #ff4b5c; }
+    50% { text-shadow: 0 0 25px #ff4b5c; }
+    100% { text-shadow: 0 0 10px #ff4b5c; }
+}
+
+/* Message */
+.message {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* Button */
+.btn-home {
+    margin-top: 30px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-home:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(101, 116, 255, 0.5);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="status-box">
+
+    {% if status %}
+        <i class="fa fa-check-circle success-icon"></i>
+        <div class="message">🎉 Payment Successful!</div>
+        <p style="color:#aaa;">Thank you for your purchase</p>
+    {% else %}
+        <i class="fa fa-times-circle fail-icon"></i>
+        <div class="message">❌ Payment Failed</div>
+        <p style="color:#aaa;">Please try again</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn-home">
+        🛍 Continue Shopping
+    </a>
+
+</div>
+
+</body>
+</html>
