@@ -1,0 +1,108 @@
+ {% extends "base.html" %}
+{% block content %}
+
+<style>
+    /* Modern Google Fonts style */
+    body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Table Container for responsiveness */
+    .table-container {
+        width: 95%;
+        margin: 0 auto;
+        overflow-x: auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px;
+    }
+
+    th {
+        background-color: #007bff; /* Professional Blue */
+        color: white;
+        font-weight: 500;
+        padding: 15px;
+        text-align: left;
+        border-bottom: 3px solid #0056b3;
+    }
+
+    td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Alternating row colors */
+    tr:nth-child(even) {
+        background-color: #fcfcfc;
+    }
+
+    /* Hover effect */
+    tr:hover {
+        background-color: #f1f7ff;
+        transition: 0.3s;
+    }
+
+    /* Department Badge Style */
+    .dept-badge {
+        background: #e1f5fe;
+        color: #0288d1;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+
+<h2>Patient Appointment Records</h2>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td><strong>{{ i.n }}</strong></td>
+                <td>{{ i.a }}</td>
+                <td>{{ i.g }}</td>
+                <td>{{ i.m }}</td>
+                <td>{{ i.e }}</td>
+                <td><span class="dept-badge">{{ i.d }}</span></td>
+                <td>{{ i.da }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
