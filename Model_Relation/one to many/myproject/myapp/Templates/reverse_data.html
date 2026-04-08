@@ -1,0 +1,52 @@
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+
+ hekllo
+
+  <table border="">
+  <tr>
+    <th>d_name</th>
+    <th>d_disc</th>
+    <th>name</th>
+    <th>city</th>
+    <th>mobile</th>
+    <th>email</th>
+    <th>course</th>
+  </tr>
+
+  {% comment %} {% for i in data %}
+      {% for emp in i.employee_set.all %}
+      <tr>
+        <td>{{ i.d_name }}</td>
+        <td>{{ i.d_disc }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.city }}</td>
+        <td>{{ emp.mobile }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.course }}</td>
+      </tr>
+      {% endfor %} {% endcomment %}
+
+       {% for i in data %}
+      {% for emp in i.puju.all %}
+      <tr>
+        <td>{{ i.d_name }}</td>
+        <td>{{ i.d_disc }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.city }}</td>
+        <td>{{ emp.mobile }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.course }}</td>
+      </tr>
+      {% endfor %}
+  {% endfor %}
+</table>   
+ </body>
+ </html>

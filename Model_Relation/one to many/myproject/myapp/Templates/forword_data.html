@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+
+ hekllo
+
+ <table border="">
+  <tr>
+    <th>name</th>
+    <th>city</th>
+    <th>mobile</th>
+    <th>email</th>
+    <th>course</th>
+    <th>d_name</th>
+    <th>d_disc</th>
+  </tr>
+  {% for i in data %}
+  <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.city}}</td>
+    <td>{{i.mobile}}</td>
+    <td>{{i.email}}</td>
+    <td>{{i.course}}</td>
+    <td>{{i.dep_data.d_name}}</td>
+    <td>{{i.dep_data.d_disc}}</td>
+  </tr>
+    
+  {% endfor %}
+
+ </table>
+    
+ </body>
+ </html>
