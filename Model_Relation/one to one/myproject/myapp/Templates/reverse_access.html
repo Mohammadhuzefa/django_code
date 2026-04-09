@@ -1,0 +1,41 @@
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+
+ hekllo
+
+ <table border="">
+  <tr>
+   
+    <th>adharr_no</th>
+    <th>create_date</th>
+    <th>create_by</th>
+     <th>name</th>
+    <th>email</th>
+    <th>contact</th>
+    <th>city</th>
+  </tr>
+  {% for i in data %}
+  <tr>
+    
+    <td>{{i.adharr_no}}</td>
+    <td>{{i.create_date}}</td>
+    <td>{{i.create_by}}</td>
+    <td>{{i.stu.name}}</td>
+    <td>{{i.stu.email}}</td>
+    <td>{{i.stu.contact}}</td>
+    <td>{{i.stu.city}}</td>
+  </tr>
+    
+  {% endfor %}
+
+ </table>
+    
+ </body>
+ </html>
