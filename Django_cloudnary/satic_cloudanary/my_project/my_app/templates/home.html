@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Cloudinary Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 30px auto;
+            width: 70%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        video {
+            width: 400px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        audio {
+            margin-top: 15px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hello Django Media</h1>
+
+    <div class="section">
+        <h2>Image</h2>
+        <img src="https://res.cloudinary.com/dg0chznki/image/upload/v1771219748/img1_rcrqey.jpg" alt="Image">
+    </div>
+    <div class="section">
+        <h2>Image</h2>
+        <img src="https://res.cloudinary.com/dg0chznki/image/upload/v1771219749/img2_dfyvbt.jpg" alt="Image">
+    </div>
+
+    <div class="section">
+        <h2>Audio</h2>
+        <audio controls>
+            <source src="https://res.cloudinary.com/dg0chznki/video/upload/v1771219687/Harry_gfi1hk.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="section">
+        <h2>Video</h2>
+        <video controls>
+            <source src="https://res.cloudinary.com/dg0chznki/video/upload/v1771219657/v_igzz6w.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</body>
+</html>
