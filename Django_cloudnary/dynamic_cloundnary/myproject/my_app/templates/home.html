@@ -1,0 +1,89 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Cloudinary Media</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            width: 320px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        img, video, audio {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        video {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Django Cloudinary Dynamic Media</h1>
+
+<div class="container">
+
+{% for i in s %}
+    <div class="card">
+
+        {% if i.image %}
+            <h3>Image</h3>
+            <img src="{{ i.image.url }}">
+        {% endif %}
+
+        {% if i.video %}
+            <h3>Video</h3>
+            <video controls>
+                <source src="{{ i.video.url }}">
+            </video>
+        {% endif %}
+
+        {% if i.audio %}
+            <h3>Audio</h3>
+            <audio controls>
+                <source src="{{ i.audio.url }}">
+            </audio>
+        {% endif %}
+
+    </div>
+{% empty %}
+    <h2>No Media Uploaded Yet</h2>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
