@@ -1,0 +1,105 @@
+ {% extends "base.html" %}
+
+{% block title %}
+<title>Select Category | BrainBattle</title>
+{% endblock title %}
+
+{% block css %}
+<style>
+.category-container{
+  width:90%;
+  max-width:1100px;
+  margin:60px auto;
+  text-align:center;
+  color:white;
+}
+
+.category-container h1{
+  margin-bottom:40px;
+  font-size:32px;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:25px;
+}
+
+.card{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  padding:30px 20px;
+  border-radius:15px;
+  transition:0.3s;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  background: rgba(255,255,255,0.2);
+}
+
+.card h2{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.card p{
+  font-size:14px;
+  opacity:0.8;
+}
+
+.start-btn{
+  margin-top:40px;
+  padding:14px 35px;
+  border:none;
+  border-radius:30px;
+  background:#ffcc00;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.start-btn:hover{
+  background:white;
+}
+</style>
+{% endblock css %}
+
+{% block content %}
+
+<div class="category-container">
+  <h1>🎯 Select Quiz Category</h1>
+
+  <div class="categories">
+    <div class="card">
+      <h2><a style="text-decoration: none;" href={% url 'science_quiz' %}>🔬 Science</a></h2>
+      <p>Physics, Chemistry, Biology</p>
+    </div>
+
+    <div class="card">
+      <h2>💻 Technology</h2>
+      <p>Computers, AI, Programming</p>
+    </div>
+
+    <div class="card">
+      <h2>⚽ Sports</h2>
+      <p>Cricket, Football, Olympics</p>
+    </div>
+
+    <div class="card">
+      <h2>🏛 History</h2>
+      <p>Ancient, Medieval, Modern</p>
+    </div>
+
+    <div class="card">
+      <h2>🌍 General Knowledge</h2>
+      <p>Mixed trivia questions</p>
+    </div>
+  </div>
+ 
+</div>
+
+{% endblock content %}

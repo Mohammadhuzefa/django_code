@@ -1,0 +1,33 @@
+ {% extends "base.html" %}
+
+{% block title %}
+<title>question | BrainBattle</title>
+{% endblock title %}
+
+{% block css %}
+ 
+{% endblock css %}
+
+{% block content %}
+ 
+hello this is qour questions
+
+<form action={% url 'checker'  %} method="post">
+{% csrf_token %}
+{% for i in data %}
+<label>{{i.question_text}}</label>
+<br>
+<input type="radio" name={{i.id}} value={{i.option1}}>{{i.option1}}
+<br>
+<input type="radio" name={{i.id}} value={{i.option2}}>{{i.option2}}
+<br>
+<input type="radio" name={{i.id}} value={{i.option3}}>{{i.option3}}
+<br>
+<input type="radio" name={{i.id}} value={{i.option4}}>{{i.option4}}
+<br>
+{% endfor %}
+<input type="submit">
+
+</form>
+
+{% endblock content %}

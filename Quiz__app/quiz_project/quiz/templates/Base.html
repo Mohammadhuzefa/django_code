@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+
+{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+<title>Quiz App</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ===== HEADER ===== */
+header{
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.logo{
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:15px;
+  position:relative;
+  padding-bottom:4px;
+  transition:0.3s;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0%;
+  height:2px;
+  background:white;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:auto;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.2);
+  color:white;
+  text-align:center;
+  padding:18px;
+  font-size:14px;
+  border-top:1px solid rgba(255,255,255,0.2);
+}
+
+footer span{
+  opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">⚡ BrainBattle</div>
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="#">Play Quiz</a>
+    <a href="#">Ranks</a>
+    <a href="#">Profile</a>
+  </nav>
+</header>
+
+ 
+{% block content %}
+
+{% endblock content %}
+
+<footer>
+  <span>© 2026 BrainBattle | Designed with ❤️</span>
+</footer>
+
+</body>
+</html>
