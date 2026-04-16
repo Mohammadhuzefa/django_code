@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title> Base.html </title>
+    {% endblock title %}
+
+    {% block css %}
+
+    {% endblock css %}
+
+</head>
+
+<body>
+    {% comment %} <nav class="navbar">
+        <div class="logo">MySite</div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav> {% endcomment %}
+
+
+    {% block content %}
+    
+    {% endblock content %}
+
+    {% comment %} <footer class="footer">
+        <div class="footer-content">
+            <h3>MySite</h3>
+            <p>Crafted with patience, tradition, and care.</p>
+
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <p class="copyright">
+                © 2026 MySite. All rights reserved.
+            </p>
+        </div>
+    </footer> {% endcomment %}
+
+    {% block scripts %}
+    
+    {% endblock scripts %}
+
+</body>
+
+</html>

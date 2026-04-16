@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+    {% comment %} <form action="{% url 'set' %}">
+    <button type="submit"> Set_Cookie</button>
+    </form><br>
+    <button type="submit"> <a href="{% url 'get' %}">Get_Cookes</a> </button>
+    <br> <br>
+    <a href="{% url 'delete' %}"><button type="button">Delete_Cookie</button>  </a>
+     {% endcomment %}
+
+     {% comment %} session
+     
+      {% endcomment %}
+
+      <form action="{% url "set" %}">
+    <button type="submit">set_session</button>
+</form>
+<a href="{% url "get" %}"><button type="submit">get_session</button></a> <br><br>
+<button type="submit"><a href="delete">detele_session</a></button>
+{% endblock content %}  
