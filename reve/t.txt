@@ -1,0 +1,33 @@
+  Id CommandLine
+  -- -----------
+   1 try { . "c:\Users\DELL\AppData\Local\Programs\Microsoft VS Code\resources\a... 
+   2 & C:/Users/DELL/OneDrive/Desktop/reve/env/Scripts/Activate.ps1
+   3 cd  .\pro\
+   4 py .\manage.py runserver
+   5 cd ..
+   6 pip freeze
+   7 pip freeze > requirements.txt
+   8 pip freeze >> requirements.txt
+   9 pip freeze > requirements.txt
+  10 deactivate
+  11 git init
+  12 git log
+  13 git status
+  14 git add requirements.txt
+  15 git status
+  16 git rm --cached .\requirements.txt
+  17 git status
+  18 git add .
+  19 git status
+  20 git commit -m "first commit"
+  21 git staqtus
+  22 git status
+  23 git status
+  24 git add .
+  25 git commit -m "second commit"
+  26 git status
+  27 git log
+  28 git remote add origin https://github.com/jatin-05dev/Django_demo.git
+  29 git branch -M Jatin
+  30 git branch -M master
+  31 git push -u origin master
