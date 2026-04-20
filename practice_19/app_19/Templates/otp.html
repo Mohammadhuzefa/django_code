@@ -1,0 +1,115 @@
+ {% extends "Base.html" %}
+
+{% block css %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f2f2f2;
+    }
+    .login-card {
+        background: #ffffff;
+        width: 480px;
+        min-height: 380px;
+        padding: 50px;
+        border-radius: 2px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        color: #1b1b1b;
+    }
+    .input-field {
+        width: 100%;
+        padding: 12px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #666;
+        font-size: 17px;
+        outline: none;
+        margin-bottom: 30px;
+        letter-spacing: 4px;
+    }
+    .input-field:focus {
+        border-bottom: 2px solid #0067b8;
+    }
+    .btn-primary {
+        background: #0067b8;
+        color: #fff;
+        border: none;
+        padding: 10px 40px;
+        font-size: 16px;
+        cursor: pointer;
+        min-width: 120px;
+    }
+    .btn-primary:hover {
+        background: #005da6;
+    }
+
+
+    .timer-text {
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: red;
+    }
+
+</style>
+{% endblock css %}
+
+{% block content %}
+
+<section class="login-container">
+    <div class="login-card">
+
+        <div style="margin-bottom: 25px;">
+            <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+                 alt="Microsoft" style="width:120px;">
+        </div>
+
+        <h2 style="font-size:26px; font-weight:600; margin-bottom:10px;">
+            Verify OTP
+        </h2>
+
+        <p style="font-size:15px; margin-bottom:25px;">
+            Enter the 6-digit code sent to your email.
+        </p>
+
+       
+
+      
+
+        <form method="post" action="{% url 'newpassword' %}">
+            {% csrf_token %}
+
+            <input type="text"
+                   name="otp"
+                   maxlength="6"
+                   placeholder="Enter OTP"
+                   required
+                   class="input-field">
+
+            <div style="display:flex; justify-content:flex-end;">
+                <button type="submit" class="btn-primary">
+                    Verify
+                </button>
+            </div>
+        </form>
+
+        <div style="margin-top:30px; font-size:14px;">
+            <a href="{% url 'forget_password' %}" style="color:#0067b8; text-decoration:none;">
+                Didn’t receive a code?
+            </a>
+             
+        </div>
+
+    </div>
+</section>
+
+ 
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "Base.html" %}
+hello
+
+{% block content %}
+
+<form method='POST' action="{% url 'edi' pk=data1.id %}">
+   {% csrf_token %}
+   <input type="text" name="taskk">
+    <input type="submit">
+</form>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+ {% extends "Base.html" %}
+ {% block content %}
+<div class="container mt-5">
+    <!-- Heading with User Details -->
+    <div class="card p-3 mb-4 shadow-sm">
+        <h3 class="mb-2">Hello {{ data.name }}!</h3>
+        <p><strong>Email:</strong> {{ data.email }}</p>
+        <p><strong>Phone:</strong> {{ data.phone }}</p>
+     
+    </div>
+
+       <div class="todo-container">
+
+        <h1>My To-Do List</h1>
+
+        <!-- Add Task Form -->
+        <form action={% url 'addtask' %} method="POST" class="todo-form">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="task">New Task:</label>
+                <input type="text" id="task" name="task" placeholder="Enter your task" required>
+                <button type="submit">Add Task</button>
+            </div>
+
+        </form>
+
+        <hr>
+
+        <!-- Task List -->
+        <ul class="task-list">
+  {% for i in data1 %}
+  
+            <!-- Single Task -->
+            <li>
+                
+
+                    <input type="checkbox" name="completed">
+
+                    <p>{{i.task}}<p>
+
+                    <button type="submit" name="edit"><a href={% url 'edit' pk=i.id %}>edit</a></button>
+                    <a href={% url 'deli' pk=i.id %}>del</a>
+
+             
+            </li>
+  {% endfor %}
+
+        </ul>
+
+    </div>
+
+    </div>
+
+{% endblock content %}
