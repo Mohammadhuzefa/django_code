@@ -1,0 +1,136 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Sign Up | Canon India</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/second.css' %}">
+<meta name="referrer" content="no-referrer">
+
+<style>
+    .login-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-card {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .login-header {
+        font-size: 24px;
+        font-weight: 400;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .input-group label {
+        display: block;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+        border-color: #e4002b;
+        outline: none;
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 14px;
+        background-color: #e4002b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .login-btn:hover {
+        background-color: #c30025;
+    }
+
+    .signup-link {
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .signup-link a {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
+{% endblock css %}
+
+{% block content %}
+
+<div class="login-container">
+    <div class="login-card">
+
+        <h2 style="color:#e4002b;font-family:serif;font-size:40px;margin:0 0 10px;letter-spacing:-2px;">
+            Canon
+        </h2>
+
+        <p class="login-header">create your account</p>
+
+        <form action="{% url 'sign' %}" method="post">
+           {% csrf_token %}
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create password" required>
+            </div>
+            <button type="submit" class="login-btn">Create Account</button>
+        </form>
+    </div>
+</div>
+
+<div style="text-align:center;padding:20px;background:white;">
+    <img src="https://in.canon/media/image/2023/05/15/8e8e7a0e7a5a4a5e8f9d0c1b2a3a4a5b_MAXIFY.jpg"
+         referrerpolicy="no-referrer"
+         style="width:100%;max-width:600px;opacity:0.5;filter:grayscale(100%);">
+</div>
+
+{% endblock content %}

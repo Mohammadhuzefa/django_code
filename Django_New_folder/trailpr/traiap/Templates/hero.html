@@ -1,0 +1,162 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+<title> hero </title>
+
+{% endblock title %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/hero.css'  %}">
+
+
+{% endblock css %}
+
+{% block content %}
+
+  
+<div class="site-container"
+     style="
+        height: 100vh; 
+        background-image: url(/static/img/p.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+     ">
+</div>
+
+<br><br><br><br><br>
+
+
+
+<div style="display: flex; justify-content: center; gap: 20px; max-width: 1300px; margin: 0 auto; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 300px; height: 480px; border-radius: 20px; position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://in.canon/media/image/2023/05/22/b7b9d7a1e0a84e6f9d4f0d3b6a9a7a1b_Pro+Imaging.jpg') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h2 style="color: white; font-size: 34px; font-weight: 500; margin-bottom: 25px; text-align: center;">For Pro Imaging</h2>
+            <a href="#" style="text-decoration: none; color: white; border: 1.5px solid white; padding: 12px 35px; border-radius: 6px; font-size: 15px; background: rgba(0,0,0,0.2);">Discover More</a>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; height: 480px; border-radius: 20px; position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h2 style="color: white; font-size: 34px; font-weight: 500; margin-bottom: 25px; text-align: center;">For Business</h2>
+            <a href="#" style="text-decoration: none; color: white; border: 1.5px solid white; padding: 12px 35px; border-radius: 6px; font-size: 15px; background: rgba(0,0,0,0.2);">Discover More</a>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; height: 480px; border-radius: 20px; position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h2 style="color: white; font-size: 34px; font-weight: 500; margin-bottom: 25px; text-align: center;">For Medical &<br>Industrial</h2>
+            <a href="#" style="text-decoration: none; color: white; border: 1.5px solid white; padding: 12px 35px; border-radius: 6px; font-size: 15px; background: rgba(0,0,0,0.2);">Discover More</a>
+        </div>
+
+    </div>
+
+    <section style="padding: 60px 20px; background-color: #f8f8f8; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    
+    <h2 style="font-size: 36px; font-weight: 400; margin-bottom: 40px; color: #333;">Featured Products</h2>
+
+    <div style="display: flex; justify-content: center; gap: 25px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+
+        <div style="background-color: white; border-radius: 20px; width: 350px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div style="background-color: #ededed; padding: 40px 20px; height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px 20px 0 0;">
+                <img src={% static 'img/download.jpg' %} alt="MegaTank" style="width: 120px; margin-bottom: 20px;">
+            </div>
+            <div style="padding: 30px 20px; text-align: center;">
+                <p style="color: #e4002b; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">New</p>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #000;">PIXMA G4780</h3>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">MRP Rs. 29 495.00/U</p>
+                <p style="font-size: 12px; color: #888; margin-bottom: 20px;">inclusive of all taxes</p>
+                <a href="#" style="display: inline-block; padding: 10px 40px; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 5px; font-size: 14px; transition: 0.3s;">Buy Now</a>
+            </div>
+        </div>
+
+        <div style="background-color: white; border-radius: 20px; width: 350px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div style="background-color: #ededed; padding: 40px 20px; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 20px 20px 0 0;">
+                <img src={% static 'img/download (2).jpg' %} alt="Camera" style="max-width: 85%; height: auto;">
+            </div>
+            <div style="padding: 30px 20px; text-align: center;">
+                <p style="color: #e4002b; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">New</p>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #000;">EOS R5 Mark II (Body)</h3>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">MRP Rs. 405 995.00/U</p>
+                <p style="font-size: 12px; color: #888; margin-bottom: 20px;">inclusive of all taxes</p>
+                <a href="#" style="display: inline-block; padding: 10px 40px; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 5px; font-size: 14px;">Buy Now</a>
+            </div>
+        </div>
+
+        <div style="background-color: white; border-radius: 20px; width: 350px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div style="background-color: #ededed; padding: 40px 20px; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 20px 20px 0 0;">
+                <img src={% static 'img/download (3).jpg' %} alt="Laser Printer" style="max-width: 80%; height: auto;">
+            </div>
+            <div style="padding: 30px 20px; text-align: center;">
+                <p style="color: #e4002b; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">New</p>
+                <h3 style="font-size: 20px; margin-bottom: 10px; color: #000;">imageCLASS LBP171dn</h3>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">MRP Rs. 24 955.00/U</p>
+                <p style="font-size: 12px; color: #888; margin-bottom: 20px;">inclusive of all taxes</p>
+                <a href="#" style="display: inline-block; padding: 10px 40px; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 5px; font-size: 14px;">Buy Now</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+<section style="max-width: 1200px; margin: 50px auto; padding: 0 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    
+    <h2 style="text-align: center; font-size: 36px; font-weight: 400; color: #333; margin-bottom: 40px;">Popular Categories</h2>
+
+    <div style="display: flex; background-color: #f8f8f8; border-radius: 15px; overflow: hidden; margin-bottom: 30px; border: 1px solid #eee;">
+        <div style="flex: 1; padding: 20px; text-align: center; background: white; border-right: 1px solid #eee; cursor: pointer;">
+            <div style="font-size: 24px; margin-bottom: 5px;">📷</div>
+            <div style="font-size: 14px; font-weight: 500;">Photography</div>
+        </div>
+        <div style="flex: 1; padding: 20px; text-align: center; color: #666; border-right: 1px solid #eee; cursor: pointer;">
+            <div style="font-size: 24px; margin-bottom: 5px;">🖨️</div>
+            <div style="font-size: 14px;">Printing</div>
+        </div>
+        <div style="flex: 1; padding: 20px; text-align: center; color: #d9534f; border-right: 1px solid #eee; cursor: pointer;">
+            <div style="font-size: 24px; margin-bottom: 5px;">📋</div>
+            <div style="font-size: 14px;">Scanning</div>
+        </div>
+        <div style="flex: 1; padding: 20px; text-align: center; color: #666; cursor: pointer;">
+            <div style="font-size: 24px; margin-bottom: 5px;">🎥</div>
+            <div style="font-size: 14px;">Cinematography<br>Solutions</div>
+        </div>
+    </div>
+ <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-family: sans-serif;">
+        
+        <div style="height: 350px; border-radius: 20px; overflow: hidden; position: relative; background: #333 url('https://in.canon/media/image/2023/02/08/96d744b25d0f41c696e5b8e998858e32_EOS+R8+Front+Slant.png') center/cover no-repeat;">
+            <div style="position: absolute; bottom: 30px; width: 100%; text-align: center;">
+                <h3 style="color: white; font-size: 22px; font-weight: 400; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">Interchangeable Lens Cameras</h3>
+            </div>
+        </div>
+
+        <div style="height: 350px; border-radius: 20px; overflow: hidden; position: relative; background: #333 url('https://in.canon/media/image/2019/07/26/50907a3f5a044079a4059d0499e99a72_PowerShot+G7+X+Mark+III+Front.png') center/cover no-repeat;">
+            <div style="position: absolute; bottom: 30px; width: 100%; text-align: center;">
+                <h3 style="color: white; font-size: 22px; font-weight: 400; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">Digital Compact Cameras</h3>
+            </div>
+        </div>
+
+        <div style="height: 350px; border-radius: 20px; overflow: hidden; position: relative; background: #333 url('https://in.canon/media/image/2023/05/19/92c68a6f6f684e27b2339599d98413b5_Lenses.jpg') center/cover no-repeat;">
+            <div style="position: absolute; bottom: 30px; width: 100%; text-align: center;">
+                <h3 style="color: white; font-size: 22px; font-weight: 400; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">Lenses</h3>
+            </div>
+        </div>
+
+        <div style="height: 350px; border-radius: 20px; overflow: hidden; position: relative; background: #333 url('https://in.canon/media/image/2023/05/19/3b8b0e7d5e4a4e9b8b7b6a5a4a3a2a1a_Accessories.jpg') center/cover no-repeat;">
+            <div style="position: absolute; bottom: 30px; width: 100%; text-align: center;">
+                <h3 style="color: white; font-size: 22px; font-weight: 400; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">Accessories</h3>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+</section>
+
+
+
+
+{% endblock content %}

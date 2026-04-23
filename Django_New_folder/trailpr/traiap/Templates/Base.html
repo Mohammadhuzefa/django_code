@@ -1,0 +1,149 @@
+ {%load static%}
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    
+
+    {% block title %}
+    
+    {% endblock title %}
+
+    {% block css %}
+    
+    {% endblock css %}
+
+   
+</head>
+<body>
+
+    <header class="canon-header">
+    <div class="top-nav">
+        <div class="logo-section">
+            <img src="{%static 'img/l.png'%}" alt="Canon Logo" class="logo">
+            <span class="country">India</span>
+        </div>
+        
+        <nav class="category-links">
+          <a href="{% url 'second.html' %}">Log in</a>
+          <a href="{% url 'career.html' %}">pro</a>
+
+            <a href="{% url 'hero.html' %}">Business</a>
+            <a href="{% url 'log' %}">Medical & Industrial</a>
+        </nav>
+
+        <div class="top-right-icons">
+            <span class="search-icon">🔍</span>
+            <span class="lang">ENG</span>
+        </div>
+    </div>
+
+    <div class="sub-nav">
+        <div class="left-links">
+            <a href="#">Products</a>
+            <a href="#">Where to Buy</a>
+            <a href="#">Service Network</a>
+            <a href="#">Extended Warranty</a>
+            <a href="#">Register your Product</a>
+            <a href="#">Press Room</a>
+            <a href="#">Contact</a>
+            <a href="#">Careers</a>
+        </div>
+        <div class="right-links">
+            <a href="#">Warranty</a>
+            <a href="#">Support</a>
+            <span class="divider">|</span>
+            <a href="#" class="eshop">🛒 eShop</a>
+        </div>
+    </div>
+</header>
+
+
+
+ {% block content %}
+    
+    {% endblock content %}
+
+
+
+
+    <footer class="canon-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Commitment to Innovation</a></li>
+                <li><a href="#">Corporate Social Responsibility</a></li>
+                <li><a href="#">Official Social Media Sites</a></li>
+                <li><a href="#">Quality, Environment, Health and Safety</a></li>
+                <li><a href="#">E-Waste</a></li>
+                <li><a href="#">Diversity</a></li>
+                <li><a href="#">Press Room</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Security & Safety</a></li>
+                <li><a href="#">Anti-Bribery & Anti-Corruption Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Products</h3>
+            <ul>
+                <li><a href="#">Photography</a></li>
+                <li><a href="#">Printing</a></li>
+                <li><a href="#">Scanning</a></li>
+                <li><a href="#">Cinematography Solutions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#">Anti-Counterfeit</a></li>
+                <li><a href="#">CIS Store</a></li>
+                <li><a href="#">Extended Warranty</a></li>
+                <li><a href="#">Labour Charges</a></li>
+                <li><a href="#">Service Network</a></li>
+                <li><a href="#">Where to Buy</a></li>
+                <li><a href="#">For Booking Camera Service Appointment</a></li>
+                <li><a href="#">Canon Asia Traveller Protection Programme (ATPP)</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Your Canon + You</h3>
+            <ul>
+                <li><a href="#">Your Canon + You</a></li>
+                <li><a href="#">Camera Catalogue</a></li>
+                <li><a href="#">PIXMA Tips</a></li>
+                <li><a href="#">Printer Catalogue</a></li>
+                <li><a href="#">e-shop Deals</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Support & Downloads</h3>
+            <ul>
+                <li><a href="#">Support & Downloads</a></li>
+                <li><a href="#">Installation Support For A4/A3 Printers and Lide Scanners</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Social</h3>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">Youtube</a></li>
+                <li><a href="#">X</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

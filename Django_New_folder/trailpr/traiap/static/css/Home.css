@@ -1,0 +1,155 @@
+ body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.canon-header {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Top Navigation Styles */
+.top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 60px;
+    height: 70px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.country {
+    color: #888;
+    font-size: 14px;
+    border-left: 1px solid #ccc;
+    padding-left: 15px;
+}
+
+.category-links a {
+    text-decoration: none;
+    color: #444;
+    margin: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 23px;
+}
+
+.category-links a.active {
+    color: #000;
+    border-bottom: 3px solid #cc0000; /* Canon Red Line */
+}
+
+.top-right-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: #cc0000;
+    font-weight: bold;
+}
+
+/* Sub Navigation Styles */
+.sub-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 60px;
+    background-color: #fff;
+    font-size: 13px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.sub-nav a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 18px;
+}
+
+.sub-nav a:hover {
+    color: #cc0000;
+}
+
+.right-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.divider {
+    color: #ccc;
+}
+
+.eshop {
+    font-weight: bold;
+}
+
+
+
+.canon-footer {
+    background-color: #000000; /* Pure Black background */
+    color: #ffffff;
+    padding: 60px 50px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    
+    
+}
+
+.footer-container {
+    display: grid;
+    /* 6 equal columns */
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+}
+
+.footer-col h3 {
+    color: #888888; /* Grayish headers */
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: none;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+    color: #cc0000; /* Canon Red on hover */
+}
+
+/* Responsive: Chhoti screen par columns kam ho jayenge */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

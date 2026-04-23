@@ -1,0 +1,57 @@
+/* Middle Section ki styling */
+.middle-content {
+    flex: 1; /* Ye footer ko niche dhakelta hai */
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Hero height */   
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    color: white;
+}
+
+/* Background image agar local nahi hai toh ye generic link use karein:
+background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1520624312550-98319e07809a?q=80&w=2000');
+*/
+
+.brand-line {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.red-text {
+    color: #cc0000; /* Canon Red */
+}
+
+.hero-subtext {
+    font-size: 1.5rem;
+    max-width: 400px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.hero-hashtag {
+    position: absolute;
+    bottom: 40px;
+    right: 5%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-section { height: 70vh; padding: 0 5%; }
+}
