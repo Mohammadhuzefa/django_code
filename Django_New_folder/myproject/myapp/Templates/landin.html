@@ -1,0 +1,65 @@
+ <form action="{% url 'data' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        <!-- Name -->
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+
+        <!-- Email -->
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+
+        <!-- Password -->
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <!-- Gender -->
+        <label>Gender:</label><br>ther"> Other  
+        <br><br>
+
+        <input type="radio" name="gender" value="male"> Male  
+        <input type="radio" name="gender" value="female"> Female  
+        <input type="radio" name="gender" value="o
+        <!-- Course -->
+        <label for="City">City:</label><br>
+        <select id="City" name="City">
+            <option value="">Select</option>
+            <option value="Bhopal">Bhopal</option>
+            <option value="Indore">Indore</option>
+            <option value="Ujjain">Ujjain</option>
+        </select>
+        <br><br>
+
+         <!-- Profile Picture -->
+        <label for="profile">Profile Picture:</label><br>
+        <input type="file" id="profile" name="profile_pic" accept=".jpg,.png">
+        <br><br>
+
+        <!-- Audio Clip -->
+        <label for="audio">Audio Clip:</label><br>
+        <input type="file" id="audio" name="audio_clip" accept="audio/*">
+        <br><br>
+
+        <!-- Video Clip -->
+        <label for="video">Video Clip:</label><br>
+        <input type="file" id="video" name="video_clip" accept="video/*">
+        <br><br>
+
+        <!-- Document -->
+        <label for="document">Document:</label><br>
+        <input type="file" id="document" name="document_file"
+               accept=".pdf,.doc,.docx,.txt">
+        <br><br>
+
+        <!-- Description -->
+        <label for="desc">Description:</label><br>
+        <textarea id="desc" name="description"
+                  rows="4" cols="40"
+                  placeholder="Write something about yourself..."></textarea>
+        <br><br>
+
+        <!-- Buttons -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+    </form>
