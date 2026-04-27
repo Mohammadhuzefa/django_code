@@ -1,0 +1,437 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block title %}
+<title>delivary</title>
+{% endblock title %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/de.css'  %}">
+
+{% endblock css %}
+
+{% block content %}
+
+ 
+  
+
+  <main class="container">
+    <!-- Filters -->
+    <div class="filters-row">
+      <button class="chip">⚙ Filters</button>
+      <button class="chip">Pure Veg</button>
+      <div class="chip">Cuisines ▾</div>
+    </div>
+
+    <!-- Inspiration / categories carousel -->
+    <section class="section">
+      <h2 class="section-title">Inspiration for your first order</h2>
+
+      <div class="carousel-wrap">
+        <button class="carousel-arrow left" data-target="cats">‹</button>
+        <div class="carousel" id="cats">
+          <!-- circular items -->
+          <div class="cat">
+            <img src="{% static 'img/imgc.avif' %}" alt="Pizza"/>
+            <p>thali</p>
+          </div>
+          <div class="cat">
+            <img src="{% static 'img/imgc1.avif'%}" alt="Biryani"/>
+            <p>cake</p>
+          </div>
+          <div class="cat">
+            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=800&q=60" alt="Burger"/>
+            <p>Burger</p>
+          </div>
+          <div class="cat">
+            <img src="{% static 'img/imgc3.avif'%}" alt="Veg Meal"/>
+            <p>pizza</p>
+          </div>
+          <div class="cat">
+            <img src="{% static 'img/imgc6.avif'%}" alt="Cake"/>
+            <p>briyani</p>
+          </div>
+          <div class="cat">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=60" alt="Chicken"/>
+            <p>Chicken</p>
+          </div>
+        </div>
+        <button class="carousel-arrow right" data-target="cats">›</button>
+      </div>
+    </section>
+
+    <!-- Top brands carousel -->
+    <section class="section">
+      <h2 class="section-title">Top brands for you</h2>
+
+      <div class="carousel-wrap small">
+        <button class="carousel-arrow left" data-target="brands">‹</button>
+        <div class="carousel brands" id="brands">
+          <!-- Use your local images or replace -->
+          <div class="brand">
+            <img src="{% static 'img/imgc9.avif'%}" alt="brand1" />
+            <p>Sagar Gaire</p>
+            <small>23 min</small>
+          </div>
+          <div class="brand">
+            <img src="{% static 'img/imgc090.avif'%}" alt="brand2" />
+            <p>Sharma & Vishnu</p>
+            <small>23 min</small>
+          </div>
+          <div class="brand">
+            <img src="{% static 'img/imgc0.avif'%}" alt="brand3" />
+            <p>Zam Zam</p>
+            <small>22 min</small>
+          </div>
+          <div class="brand">
+            <img src="{% static 'img/imgc7.avif'%}" alt="brand4" />
+            <p>Manohar</p>
+            <small>23 min</small>
+          </div>
+          <div class="brand">
+            <img src="{% static 'img/imgc8.avif'%}" alt="brand5" />
+            <p>Bake N Shake</p>
+            <small>21 min</small>
+          </div>
+          <div class="brand">
+            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=60" alt="brand6" />
+            <p>Burger King</p>
+            <small>35 min</small>
+          </div>
+        </div>
+        <button class="carousel-arrow right" data-target="brands">›</button>
+      </div>
+    </section>
+
+    <!-- Restaurants grid -->
+    <section class="section">
+      <h2 class="section-title">Food Delivery Restaurants in Bhopal</h2>
+
+      <div class="grid">
+        <!-- card 1 -->
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹100 OFF</span>
+            <img src="{% static 'img/imgd1.avif'%}" alt="Indian Tea House" />
+            <span class="badge rating">4.3★</span>
+          </div>
+          <div class="meta">
+            <h3>Indian Tea House</h3>
+            <p class="cuis">Beverages, Fast Food, Tea</p>
+            <div class="bottom">
+              <div class="price">₹200 for one</div>
+              <div class="time">30 min</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- card 2 -->
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹100 OFF</span>
+            <img src="{% static 'img/imgd.avif'%}" alt="Sagar Gaire" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Sagar Gaire Fast Food</h3>
+            <p class="cuis">Chinese, North Indian, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹150 for one</div>
+              <div class="time">23 min</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- card 3 -->
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹200 OFF</span>
+            <img src="{% static 'img/imgd0.avif'%}" alt="Khan Sahab" />
+            <span class="badge rating">4.1★</span>
+          </div>
+          <div class="meta">
+            <h3>Khan Sahab</h3>
+            <p class="cuis">North Indian, Mughlai, Biryani</p>
+            <div class="bottom">
+              <div class="price">₹200 for one</div>
+              <div class="time">27 min</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- more cards (copy paste) -->
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹120 OFF</span>
+            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=900&q=60" alt="Pizza" />
+            <span class="badge rating">4.2★</span>
+          </div>
+          <div class="meta">
+            <h3>Pizza Hub</h3>
+            <p class="cuis">Pizza, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹300 for one</div>
+              <div class="time">25 min</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">PROMOTED</span>
+            <img src="{% static 'img/imgd9.avif'%}" alt="Thali" />
+            <span class="badge rating">4.4★</span>
+          </div>
+          <div class="meta">
+            <h3>Thali House</h3>
+            <p class="cuis">Indian, Thali</p>
+            <div class="bottom">
+              <div class="price">₹180 for one</div>
+              <div class="time">28 min</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd7.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+
+
+
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd43.webp'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+
+
+
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd8.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd6.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd1.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd8.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd8.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd0.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd2.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd3.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd6.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+
+
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd7.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd8.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src=" {% static 'img/imgd4.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+         <article class="card-restaurant">
+          <div class="img-wrap">
+            <span class="badge offer">₹150 OFF</span>
+            <img src="{% static 'img/imgd2.avif'%}" alt="Wraps" />
+            <span class="badge rating">4.0★</span>
+          </div>
+          <div class="meta">
+            <h3>Wrap & Roll</h3>
+            <p class="cuis">Rolls, Fast Food</p>
+            <div class="bottom">
+              <div class="price">₹120 for one</div>
+              <div class="time">22 min</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+ 
+
+{% endblock content %}

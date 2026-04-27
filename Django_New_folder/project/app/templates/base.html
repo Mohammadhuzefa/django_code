@@ -1,0 +1,125 @@
+ <!DOCTYPE html>
+ {% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+ 
+ {% block title %}
+
+
+
+ 
+ {% endblock title %}
+
+
+  
+ {% block css %}
+ 
+ {% endblock css %}
+
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">zomato</div>
+    <div class="location-box">
+      <input type="text" placeholder="Bhopal" />
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search for restaurant, cuisine or a dish" />
+    </div>
+    <div class="auth-buttons">
+      <a href="{% url 'login' %}">Log in</a>
+      <a href="{% url 'sign' %}">Sign up</a>
+    </div>
+  </nav>
+
+  <div class="tabs">
+    <div class="tab"><a href="{% url 'landing' %}">food</a></div>
+    <div class="tab"><a href="{% url 'deli' %}">menia</a></div>
+    <div class="tab active"><a href="{% url 'night' %}">night</a></div>
+  </div>
+
+
+
+
+{% block content %}
+
+
+{% endblock content %}
+ 
+
+ 
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">zomato</div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>ABOUT ZOMATO</h4>
+          <a href="#">Who We Are</a>
+          <a href="#">Blog</a>
+          <a href="#">Work With Us</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Report Fraud</a>
+          <a href="#">Press Kit</a>
+          <a href="#">Contact Us</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>ZOMAVERSE</h4>
+          <a href="#">Zomato</a>
+          <a href="#">Blinkit</a>
+          <a href="#">District</a>
+          <a href="#">Feeding India</a>
+          <a href="#">Hyperpure</a>
+          <a href="#">Zomato Live</a>
+          <a href="#">Zomaland</a>
+          <a href="#">Weather Union</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>FOR RESTAURANTS</h4>
+          <a href="#">Partner With Us</a>
+          <a href="#">Apps For You</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>LEARN MORE</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Security</a>
+          <a href="#">Terms</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>SOCIAL LINKS</h4>
+
+          <div class="social-icons">
+            <span>🔗</span><span>📷</span><span>▶</span><span>❌</span><span>📘</span>
+          </div>
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29_logo.svg" class="store-btn" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="store-btn" />
+        </div>
+      </div>
+
+      <hr class="footer-line" />
+
+      <p class="footer-bottom">By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners. 2008–2025 © Zomato™ Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+ 
+   {% block js %}
+ 
+ {% endblock js %}
+
+</body>
+</html>

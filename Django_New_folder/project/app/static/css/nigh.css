@@ -1,0 +1,303 @@
+         /* General Reset and Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+      --bg:#faf7f6;
+        /* White background for the main content area */
+            color: #333;
+        }
+
+        /* Main Container for Page Content */
+        .content-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto; /* Removed top/bottom margin to match closer to top of page */
+            padding: 0 15px;
+        }
+
+        /* --- Category Tabs (Dining Out, Delivery, Nightlife) --- */
+        .category-tabs {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e9e9e9;
+            margin-bottom: 30px;
+        }
+
+        .category-tab {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px 15px 0;
+            cursor: pointer;
+            color: #7d7d7d;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .category-tab-icon {
+            margin-right: 8px;
+            font-size: 24px;
+        }
+
+        .category-tab.active {
+            color: #e23744;
+            position: relative;
+        }
+
+        .category-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Align with the border */
+            left: 0;
+            width: 80%;
+            height: 3px;
+            background-color: #e23744;
+            border-radius: 2px 2px 0 0;
+        }
+
+        /* Emulating specific icons based on the screenshot */
+        .icon-dining::before { content: '🍽️'; /* A simple food icon */ }
+        .icon-delivery::before { content: '🛵'; /* A scooter icon */ }
+        .icon-nightlife::before { content: '🍾'; /* A nightlife icon */ }
+
+
+        /* --- Collections Section --- */
+        .collections-section {
+            margin-bottom: 30px;
+        }
+
+        .collections-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 10px;
+        }
+
+        .collections-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .collections-info p {
+            margin: 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .all-collections-link {
+            color: #e23744;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+        }
+
+        .collection-card {
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background-color: #333; /* Fallback */
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .collection-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        /* Unique image placeholders for each card */
+        .card-1 { background: url('../img/imr6.avif') center/cover no-repeat; }
+        .card-2 { background: url('../img/9cdab6d5f275b8d2532e3878134ddbda.avif') center/cover no-repeat; }
+        .card-3 { background: url('../img/52c7d5da8e53fd38dca6eb3cec301628_featured_v2.avif') center/cover no-repeat; }
+        .card-4 { background: url('../img/imgc090.avif') center/cover no-repeat; }
+
+
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            z-index: 2;
+        }
+
+        .collection-text {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: #fff;
+            z-index: 3;
+        }
+
+        .collection-text h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .collection-text p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .collection-arrow {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            background-color: #fff;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        /* --- Filter Bars (Reused from previous response, with new filters) --- */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            background-color: #fff;
+            color: #555;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #333;
+        }
+
+        .pubs-bars-btn {
+            background-color: #fcecec;
+            border-color: #e23744;
+            color: #e23744;
+        }
+
+        /* --- Explore Options Section (Accordion style) --- */
+        .explore-options-section {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e9e9e9;
+        }
+
+        .explore-options-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 25px;
+        }
+
+        .option-item {
+            border: 1px solid #e9e9e9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1c1c1c;
+        }
+
+        .dropdown-icon {
+            font-size: 20px;
+            color: #888;
+            transform: rotate(0deg);
+            transition: transform 0.2s;
+        }
+
+        /* Not needed for this static clone, but for reference: */
+        /* .option-item.active .dropdown-icon { transform: rotate(180deg); } */
+
+        /* Placeholder styles for the 50% Off Banner from the first screenshot */
+        .placeholder-banner {
+            height: 200px;
+            background-color: #333;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            box-sizing: border-box;
+            background: url('../img/img3.avif') center/cover no-repeat;
+            position: relative;
+        }
+
+        .placeholder-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+        }
+
+        .banner-content-clone {
+            z-index: 1;
+            position: relative;
+        }
+
+        .banner-content-clone h2 {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            font-weight: normal;
+        }
+         .banner-content-clone p {
+            font-size: 16px;
+            margin: 0 0 15px 0;
+        }
+        .banner-btn-clone {
+            background-color: #e23744;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
