@@ -1,0 +1,21 @@
+  <form method="POST">
+    {% csrf_token %}
+
+    <label>Name</label>
+    {{ data.name }}
+    <p style="color:red;">{{ data.name.errors }}</p>
+
+    <label>Email</label>
+    {{ data.email }}
+    <p style="color:red;">{{ data.email.errors }}</p>
+
+    <label>Age</label>
+    {{ data.age }}
+    <p style="color:red;">{{ data.age.errors }}</p>
+
+    <label>City</label>
+    {{ data.city }}
+    <p style="color:red;">{{ data.city.errors }}</p>
+8
+    <input type="submit">
+</form>
