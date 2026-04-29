@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0145)https://www.boat-lifestyle.com/web-pixels@fcfee988w5aeb613cpc8e4bc33m6693e112/custom/web-pixel-135954530@2/sandbox/modern/pages/gifting-with-boat -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Gifting with BoAt</title>
+    <script src="./sfcfee988w5aeb613cpc8e4bc33m6693e112m.js.download"></script>
+
+    <script type="text/javascript">
+  (function(shopify) {shopify.extend('WebPixel::Render', function(api) {
+var analytics=api.analytics,browser=api.browser,init=api.init;
+// Required settings
+const CT_ACCOUNT_ID = "8W4-9WW-Z85Z" // Your CleverTap account ID
+const CT_REGION = "eu1" // Your CleverTap region (e.g., "eu1", "in1")
+const CT_USER_IDENTITY = 'both' // Value can be 'email', 'phone' or 'both'
+ 
+// Optional features
+const CT_MULTICART_PERSONALISATION = true // Enable multicart personalization
+const EXTRACT_PHONE_FROM_ADDRESS = false
+const DISCARD_EVENTS = []
+const EXTRACT_DETAILS_FROM_DISCARDED_EVENTS = true
+
+let ctPixelTrackerLoaded = false
+const unPublishedEventsArray = []
+
+function loadShopifyCheckoutScript() {
+  const ctPixelTrackerScriptElement = document.createElement('script')
+  ctPixelTrackerScriptElement.type = 'text/javascript'
+  ctPixelTrackerScriptElement.async = true
+  ctPixelTrackerScriptElement.src =
+    'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertapShopifyPixel.js'
+  ctPixelTrackerScriptElement.onload = () => {
+    ctPixelTrackerLoaded = true
+    while (unPublishedEventsArray.length) {
+      const event = unPublishedEventsArray.shift()
+      shopifyCheckoutPageTrackEvents(
+        event,
+        CT_ACCOUNT_ID,
+        CT_REGION,
+        DISCARD_EVENTS,
+        CT_MULTICART_PERSONALISATION,
+        CT_USER_IDENTITY,
+        EXTRACT_PHONE_FROM_ADDRESS,
+        EXTRACT_DETAILS_FROM_DISCARDED_EVENTS
+      )
+    }
+  }
+  const s = document.getElementsByTagName('script')[0]
+  s.parentNode.insertBefore(ctPixelTrackerScriptElement, s)
+}
+
+if (init.context.window.location.pathname.includes('/checkouts/')) {
+  loadShopifyCheckoutScript()
+  analytics.subscribe('all_events', (event) => {
+    if (event?.name) {
+      if (!ctPixelTrackerLoaded) {
+        unPublishedEventsArray.push(event)
+      } else {
+        shopifyCheckoutPageTrackEvents(
+          event,
+          CT_ACCOUNT_ID,
+          CT_REGION,
+          DISCARD_EVENTS,
+          CT_MULTICART_PERSONALISATION,
+          CT_USER_IDENTITY,
+          EXTRACT_PHONE_FROM_ADDRESS,
+          EXTRACT_DETAILS_FROM_DISCARDED_EVENTS
+        )
+      }
+    }
+  })
+}
+});})(self.webPixelsManager.createShopifyExtend('135954530', 'custom'));
+
+</script>
+
+  </head>
+  <body>
+
+</body></html>

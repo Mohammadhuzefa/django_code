@@ -1,0 +1,856 @@
+{% extends "Base.html" %}
+ {% load static %}
+{% block tiltle %}
+    <title>prosfaction</title>
+
+{% endblock tiltle %}
+
+{% block css %}
+  <style>
+        :root {
+            --boat-yellow: #ffcc00;
+            --boat-green: #00c853;
+            --boat-gray: #f4f4f4;
+            --text-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif, Arial;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Area */
+        .breadcrumb { font-size: 12px; color: #888; margin-bottom: 10px; }
+        .page-title { font-size: 26px; font-weight: 800; margin-bottom: 25px; }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn, .sort-btn {
+            padding: 8px 15px;
+            border: 1px solid #e0e0e0;
+            background: #f9f9f9;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Card Design */
+        .product-card {
+            display: flex;
+            border: 1px solid #efefef;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+
+        /* Left side (Image) */
+        .card-image-wrapper {
+            width: 160px;
+            min-width: 160px;
+            background-color: var(--boat-gray);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .engraving-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            font-size: 9px;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .playback-strip {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: var(--boat-yellow);
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        /* Right side (Info) */
+        .card-content {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rating-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .rating { font-size: 11px; font-weight: 700; color: #1a1a1a; }
+        .best-seller { 
+            background: #fff9c4; 
+            font-size: 9px; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-weight: 700;
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .current-price { font-size: 16px; font-weight: 800; }
+        .original-price { font-size: 12px; text-decoration: line-through; color: #aaa; }
+        .discount { font-size: 12px; color: var(--boat-green); font-weight: 700; }
+
+        .feature-capsules {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .capsule {
+            background: #f1f1f1;
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .view-product-btn {
+            width: 100%;
+            background: var(--text-dark);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVE QUERIES */
+        @media (max-width: 1100px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 20px; }
+            .toolbar { flex-direction: column; gap: 10px; }
+            .product-card { height: auto; }
+            .card-image-wrapper { width: 130px; min-width: 130px; }
+        }
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="breadcrumb">Home > Special Range — Personalised Products</div>
+    <h1 class="page-title">Special Range — Personalised Products</h1>
+
+    <div class="toolbar">
+        <button class="filter-btn">⚙ Filter By</button>
+        <button class="sort-btn">Sort by : Featured ⌵</button>
+    </div>
+
+    <div class="product-grid" style="">
+        <div class="product-card" >
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/2c313a/ffffff?text=Airdopes+131" alt="Airdopes 131">
+                <div class="playback-strip">60 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 1463 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 131</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹799</span>
+                        <span class="original-price">₹2,990</span>
+                        <span class="discount">73% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">13mm drivers</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/ff4444/ffffff?text=Power+Bank" alt="Power Bank">
+                <div class="playback-strip">20000mAh Power Bank</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.7 | 52 ✅</span>
+                    </div>
+                    <h3 class="product-name">boAt Energyshroom PB400</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹1,699</span>
+                        <span class="original-price">₹4,499</span>
+                        <span class="discount">62% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">2-Way Fast Charging</span>
+                        <span class="capsule">Smart IC</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="card-image-wrapper">
+                <span class="engraving-tag">🔥 Engraving Available</span>
+                <img src="https://via.placeholder.com/150/f0f0f0/333333?text=Airdopes+161" alt="Airdopes 161">
+                <div class="playback-strip">40 Hours Playback</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <div class="rating-row">
+                        <span class="rating">⭐ 4.8 | 514 ✅</span>
+                        <span class="best-seller">🏆 Best seller</span>
+                    </div>
+                    <h3 class="product-name">boAt Airdopes 161</h3>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹2,490</span>
+                        <span class="discount">64% off</span>
+                    </div>
+                    <div class="feature-capsules">
+                        <span class="capsule">ASAP™ Charge</span>
+                        <span class="capsule">IWP Technology</span>
+                    </div>
+                </div>
+                <button class="view-product-btn">View Product</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}

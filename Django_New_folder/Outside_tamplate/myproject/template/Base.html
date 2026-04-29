@@ -1,0 +1,87 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href={% static 'css/Base.css' %}>
+    {% block title %}
+    <title>landing page</title>
+    {% endblock title %}
+    
+    {% block css %}
+    
+    {% endblock css %}
+</head>
+<body>
+
+
+    <header>
+        <div class="promo-bar">
+            Get Extra 5% Off On Prepaid Orders | Code: <b>BOATHEAD</b> | <a href="#">Shop Now</a>
+        </div>
+        
+        <div class="nav-container">
+            <div class="logo">
+                <h2 style="color: red; font-weight: bold;">boAt</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Categories <i class="fa fa-chevron-down"></i></a></li>
+                    <li><a href="#">boAt Personalisation</a></li>
+                    <li><a href="#">Corporate Orders</a></li>
+                    <li><a href="#">Gifting Store</a></li>
+                    <li><a href="#">More <i class="fa fa-chevron-down"></i></a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-icons">
+                <div class="search-bar">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search 'Earphones'">
+                </div>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </header>
+ <br>
+  
+ 
+{% block content %}
+ 
+{% endblock content %}
+    <footer>
+        <div class="footer-social">
+            <h3>Let's get social</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Warranty Policy</a>
+            <a href="#">D2D Paid Repair Service Policy</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Imagine Marketing Limited. All Rights Reserved.</p>
+            <p>For queries contact us: Manager, Imagine Marketing Limited Unit no. 204 & 205, 2nd floor, D-wing & E-wing,<br>
+            Corporate Avenue, Andheri Ghatkopar Link Road, Mumbai, Maharashtra-400093, India</p>
+        </div>
+    </footer>
+
+{% block js %}
+
+{% endblock js %}
+</body>
+</html>

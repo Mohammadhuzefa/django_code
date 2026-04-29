@@ -1,0 +1,165 @@
+ /* --- Root Variables --- */
+:root {
+    --bg-gray: #f7f9fa;
+    --yellow: #ffcf2a;
+    --green: #00c684;
+    --border: #ececec;
+    --primary-blue: #1a3a6c;
+}
+
+/* --- General Fixes --- */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0; /* Changed from 20px to 0 for better mobile edge-to-edge */
+    overflow-x: hidden;
+}
+
+.boAt-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px; /* Added padding so content doesn't touch screen edges */
+}
+
+/* --- Swiper Container Size --- */
+.swiper {
+    width: 100%;
+    height: auto; /* Allow height to be flexible */
+    min-height: 500px; /* Base height for Desktop */
+    background-color: #d8e3ff;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-wrap: wrap; /* Allows stacking on mobile */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 8%;
+    box-sizing: border-box;
+}
+
+/* --- Left Side Content --- */
+.slide-content {
+    flex: 1;
+    min-width: 300px; /* Prevents text from getting too squeezed */
+    animation: fadeInUp 0.8s ease;
+}
+
+.slide-content h1 {
+    font-size: clamp(32px, 6vw, 75px); /* Scales between 32px and 75px */
+    color: var(--primary-blue);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.slide-content .features {
+    list-style: none;
+    font-size: clamp(16px, 2vw, 20px);
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.current-price {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.shop-btn {
+    background: #5d63b2;
+    color: white;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* --- Right Side Image --- */
+.slide-image {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.slide-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+}
+
+/* --- Product Grid - Responsive Columns --- */
+.product-grid { 
+    display: grid; 
+    /* Desktop: 4, Tablet: 2, Mobile: 1 or 2 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px; 
+}
+
+/* Bigger Image Box responsive height */
+.img-box { 
+    position: relative; 
+    background: var(--bg-gray); 
+    height: 300px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px;
+}
+
+/* --- Category circles scroll --- */
+.category-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none; /* Hides scrollbar on Firefox */
+}
+.category-scroll::-webkit-scrollbar { display: none; } /* Hides scrollbar on Chrome */
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet View (992px and below) */
+@media (max-width: 992px) {
+    .swiper { min-height: 400px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .header-row h2 { font-size: 20px; }
+}
+
+/* Mobile View (600px and below) */
+@media (max-width: 600px) {
+    .swiper-slide {
+        flex-direction: column-reverse; /* Image on top, text below */
+        text-align: center;
+        padding: 30px 5%;
+    }
+
+    .slide-image img { max-height: 250px; }
+
+    .product-grid { 
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile is standard for boAt style */
+        gap: 10px; 
+    }
+
+    .img-box { height: 180px; padding: 10px; } /* Smaller images on mobile */
+    .info h3 { font-size: 14px; }
+    .price-row strong { font-size: 16px; }
+    
+    .filter-tabs {
+        overflow-x: auto; /* Tab scroll for many categories */
+        white-space: nowrap;
+        gap: 15px;
+    }
+    
+    .shop-btn { width: 100%; } /* Full width button on mobile */
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

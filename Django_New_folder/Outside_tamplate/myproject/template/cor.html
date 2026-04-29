@@ -1,0 +1,526 @@
+{% extends "Base.html" %}
+ {% load static %}
+{% block tiltle %}
+    <title>corporate</title>
+
+{% endblock tiltle %}
+
+{% block css %}
+  
+  <style>
+        .bulk-gifting-section {
+            display: flex;
+            font-family: 'Inter', sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #f8f9fa; /* Right side background */
+        }
+
+        /* Left Image Section with Gradient */
+        .gifting-image-side {
+            flex: 1.2;
+            background: linear-gradient(135deg, #a70000 0%, #ff0000 100%);
+            position: relative;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .gifting-image-side h2 {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .gifting-image-side h2 span {
+            font-weight: 800;
+            display: block;
+            font-size: 42px;
+        }
+
+        .products-img {
+            width: 100%;
+            max-width: 450px;
+            margin-top: 20px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+        }
+
+        /* Right Content Section */
+        .gifting-content-side {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+
+        .gifting-content-side h3 {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            color: #1a1a1a;
+        }
+
+        .gifting-content-side p.tagline {
+            font-size: 24px;
+            font-style: italic;
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+
+        .gifting-content-side p.description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .submit-btn {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 18px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            width: fit-content;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .bulk-gifting-section {
+                flex-direction: column;
+                margin: 20px;
+            }
+            .gifting-image-side {
+                padding: 40px 20px;
+            }
+            .gifting-content-side {
+                padding: 40px 20px;
+                text-align: center;
+                align-items: center;
+            }
+            .gifting-content-side h3 { font-size: 36px; }
+            .submit-btn { width: 100%; }
+        }
+
+
+
+
+
+
+
+
+
+
+        <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: #fff; color: #1a1a1a; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .section-header h2 { font-size: 24px; font-weight: 800; margin: 0; }
+        .section-header h2 span { text-decoration: underline; text-decoration-color: #ff0000; text-underline-offset: 6px; }
+        .view-all { color: #007bff; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+        /* Category Icons Section */
+        .category-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+        }
+        .category-scroll::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .category-item { text-align: center; min-width: 100px; cursor: pointer; }
+        .category-item img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px; }
+        .category-item p { font-size: 12px; font-weight: 700; margin: 0; line-height: 1.2; }
+
+        /* Big Deals Grid */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .deal-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .deal-img-wrapper { background: #f4f4f4; height: 180px; position: relative; }
+        .deal-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .deal-tag {
+            position: absolute; top: 10px; left: 10px;
+            background: #000; color: #fff; font-size: 9px;
+            padding: 4px 8px; border-radius: 4px; font-weight: 700;
+        }
+
+        .yellow-strip {
+            position: absolute; bottom: 0; width: 100%;
+            background: #ffcc00; color: #000; font-size: 10px;
+            font-weight: 800; padding: 4px 0; text-align: center;
+        }
+
+        .deal-info { padding: 12px; }
+        .deal-info h4 { font-size: 14px; font-weight: 800; margin: 0 0 8px 0; }
+        
+        .rating-box {
+            background: #fff; border: 1px solid #eee;
+            position: absolute; bottom: 10px; right: 10px;
+            padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800;
+        }
+
+        .price-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+        .price-row .curr { font-weight: 800; font-size: 15px; }
+        .price-row .old { text-decoration: line-through; color: #aaa; font-size: 11px; }
+        .price-row .off { color: #00c853; font-weight: 700; font-size: 11px; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .deals-grid { grid-template-columns: repeat(2, 1fr); }
+            .deal-img-wrapper { height: 150px; }
+        }
+    </style>
+    </style>
+{% endblock css %}
+
+{% block content %}
+<div class="bulk-gifting-section">
+    <div class="gifting-image-side">
+        <h2>Gratitude Now Comes with Great Audio <span>GIFT boAt</span></h2>
+        <img src="https://via.placeholder.com/450x300/transparent/ffffff?text=boAt+Products+Image" alt="boAt Gifting" class="products-img">
+    </div>
+
+    <div class="gifting-content-side">
+        <h3>Bulk Gifting?</h3>
+        <p class="tagline">This festive season, gift smart, gift boAt.</p>
+        <p class="description">Explore exclusive festive deals here.</p>
+        <button class="submit-btn">Submit Your Requirement</button>
+    </div>
+</div>
+ 
+
+
+ <div class="container">
+    <div class="section-header">
+        <h2>Shop by <span>Categories</span></h2>
+        <a href="#" class="view-all">View All &rarr;</a>
+    </div>
+    
+    <div class="category-scroll">
+        <div class="category-item">
+            <img src={% static 'img/9.avif' %} alt="TWS">
+            <p>True Wireless Earbuds</p>
+        </div>
+
+        
+        <div class="category-item">
+            <img src={% static 'img/00.webp' %} alt="Watch">
+            <p>Smart Watches</p>
+        </div>
+
+                <div class="category-item">
+            <img src={% static 'img/89.webp' %} alt="Speaker">
+            <p>Wireless Speakers</p>
+        </div>
+        <div class="category-item">
+            <img src={% static 'img/89.webp' %} alt="Speaker">
+            <p>Wireless Speakers</p>
+        </div>
+        <div class="category-item">
+            <img src={% static 'img/90.webp' %} alt="Neckbands">
+            <p>Neckbands</p>
+        </div>
+               <div class="category-item">
+            <img src={% static 'img/90.webp' %} alt="Neckbands">
+            <p>Neckbands</p>
+        </div>
+
+ 
+  
+    </div>
+
+    <div class="section-header" style="margin-top: 40px;">
+        <h2>Big <span>Deals</span></h2>
+        <a href="#" class="view-all">View All &rarr;</a>
+    </div>
+
+    <div class="deals-grid">
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● Bestseller</div>
+                <img src={% static 'img/141_ls.avif' %} alt="Product">
+                <div class="rating-box">⭐ 4.9</div>
+                <div class="yellow-strip">35 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Airdopes Alpha</h4>
+                <div class="price-row">
+                    <span class="curr">₹799</span>
+                    <span class="old">₹3,490</span>
+                    <span class="off">77% off</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/AD_161.avif' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/Airdopes-163.avif' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/BLOG4_600X.webp' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/ga.webp' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/img1.webp' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src={% static 'img/img1.webp' %} alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● New Launch</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">12 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Stone 350 Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹1,499</span>
+                    <span class="old">₹4,990</span>
+                    <span class="off">70% off</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="deal-card">
+            <div class="deal-img-wrapper">
+                <div class="deal-tag">● EXTRA ₹100 OFF</div>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <div class="rating-box">⭐ 4.6</div>
+                <div class="yellow-strip">80 Hours Playback</div>
+            </div>
+            <div class="deal-info">
+                <h4>boAt Nirvana Zenith Pro</h4>
+                <div class="price-row">
+                    <span class="curr">₹2,699</span>
+                    <span class="old">₹14,990</span>
+                    <span class="off">82% off</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
