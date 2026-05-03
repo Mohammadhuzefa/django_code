@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Generate JWT</title>
+</head>
+<body>
+
+<h2>Officer JWT Generator</h2>
+
+<form action="/generate-jwt/" method="POST">
+    {% csrf_token %}
+
+```
+<label>Name</label><br>
+<input type="text" name="name"><br><br>
+
+<label>Email</label><br>
+<input type="email" name="email"><br><br>
+
+<label>Post</label><br>
+<input type="text" name="post"><br><br>
+
+<label>Salary</label><br>
+<input type="number" name="salary"><br><br>
+
+<label>Role</label><br>
+<select name="roll">
+    <option value="admin">Admin</option>
+    <option value="staff">Staff</option>
+    <option value="user">User</option>
+</select>
+<br><br>
+
+<label>Password</label><br>
+<input type="password" name="password"><br><br>
+
+<button type="submit">Generate JWT</button>
+```
+
+</form>
+
+<br>
+
+{% if token %}
+
+<h3>JWT Token</h3>
+<textarea rows="6" cols="80">{{token}}</textarea>
+{% endif %}
+
+</body>
+</html>
