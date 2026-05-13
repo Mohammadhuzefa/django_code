@@ -1,0 +1,97 @@
+<h1> Wellcome to admin dashboard </h1>
+
+
+<div class="layout">
+
+    <!-- Left Fixed Sidebar -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="{% url "dashboard" %}" class="active">Dashboard</a></li>
+            <li><a href="{% url "todo_list" %}">Todo List</a></li>
+        </ul>
+
+    </aside>
+
+    <main class="main-content">
+
+    {% if dashboard_content %}
+        <!-- Dashboard Content -->
+        <h1 class="welcome">Welcome, {{ user_detail.user_name }}!</h1>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-value">{{ user_detail.user_name }}</div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Your Email</div>
+                <div class="card-value">{{ user_detail.user_email }}</div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if todo_list %}
+    <!-- Add Task Form -->
+    <form action="{% url 'add_task' %}" method="post">
+        {% csrf_token %}
+        <div style="display:flex; gap:12px; max-width:700px; margin-bottom:40px;">
+            <input type="text" name="task" placeholder="Enter new task..." required class="task-input">
+            <button type="submit" class="btn-add-task">Add Task</button>
+        </div>
+    </form>
+
+    <!-- Task List -->
+    <div class="todo-list">
+    {% for task_details in task_detail %}
+        <div class="todo-item">
+
+            {% if edit_task_obj and edit_task_obj.id == task_details.id %}
+
+                <!-- Editable Mode -->
+                <form action="{% url 'update_task' task_details.id %}" method="post" style="display:flex; gap:10px; width:100%;">
+                    {% csrf_token %}
+                    <input type="text" name="task" value="{{ task_details.task }}" class="task-input">
+                    <button type="submit" class="btn-edit">Update</button>
+                </form>
+
+            {% else %}
+
+                <!-- Normal Mode -->
+                <span class="task-text">{{ task_details.task }}</span>
+
+                <div class="todo-actions">
+                    <a href="{% url 'edit_task' task_details.id %}">
+                        <button type="button" class="btn-edit">Edit</button>
+                    </a>
+
+                    <form action="{% url 'delete_task' task_details.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </div>
+
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
