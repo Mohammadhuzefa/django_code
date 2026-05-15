@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}
+
+<title> night </title>
+
+{% endblock title %}
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/nigh.css'  %}">
+
+  
+{% endblock css %} 
+
+
+{% block content %}
+
+ 
+ 
+ 
+    <div class="content-container">
+
+        <div class="category-tabs">
+           
+        </div>
+
+        <div class="collections-section">
+            <div class="collections-info">
+                 <p>Explore curated lists of top restaurants, cafes, pubs, and bars in Bhopal, based on trends</p>
+                 <a href="#" class="all-collections-link">All collections in Bhopal <span style="margin-left: 5px;">&#x25b8;</span></a>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-card card-1">
+                    <div class="collection-overlay"></div>
+                    <div class="collection-text">
+                        <h3>Great cafes</h3>
+                        <p>18 Places</p>
+                    </div>
+                </div>
+                <div class="collection-card card-2">
+                    <div class="collection-overlay"></div>
+                    <div class="collection-text">
+                        <h3>Best Luxury Dining Places</h3>
+                        <p>29 Places</p>
+                    </div>
+                </div>
+                <div class="collection-card card-3">
+                    <div class="collection-overlay"></div>
+                    <div class="collection-text">
+                        <h3>Best Bars & Pubs</h3>
+                        <p>19 Places</p>
+                    </div>
+                </div>
+                <div class="collection-card card-4">
+                    <div class="collection-overlay"></div>
+                    <div class="collection-text">
+                        <h3>Sky High Sips</h3>
+                        <p>17 Places</p>
+                    </div>
+                </div>
+                 <div class="collection-arrow">&#x25b8;</div>
+            </div>
+        </div>
+
+        <div class="filter-bar" style="border-bottom: 1px solid #e9e9e9; padding-bottom: 20px; margin-bottom: 30px;">
+            <div class="filter-btn">Filters</div>
+            <div class="filter-btn">Offers</div>
+            <div class="filter-btn">Rating: 4.5+</div>
+            <div class="filter-btn pubs-bars-btn">Pubs & Bars</div>
+            <div class="filter-btn">Pet friendly</div>
+            <div class="filter-btn">Outdoor seating</div>
+            <div class="filter-btn">Serves Alcohol</div>
+            <div class="filter-btn">Open Now</div>
+        </div>
+
+
+        <div class="placeholder-banner">
+             
+        </div>
+
+        <div class="explore-options-section">
+            <h2>Explore options near me</h2>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Popular cuisines near me
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Popular restaurant types near me
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Top restaurant chains
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Cities we deliver to
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Popular Dishes Near Me
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+            <div class="option-item">
+                <div class="option-header">
+                    Discover More Fun
+                    <span class="dropdown-icon">&#x25be;</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: #e23744; border-radius: 50%; box-shadow: 0 2px 10px rgba(226, 55, 68, 0.5); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+            &#x25b2;
+        </div>
+
+    </div>
+ 
+{% endblock content %}

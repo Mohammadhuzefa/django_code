@@ -1,0 +1,338 @@
+ *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#faf7f6;
+      --muted:#9b9b9b;
+      --accent:#ff6b6b;
+      --card-shadow: 0 6px 18px rgba(10,10,10,0.08);
+      --radius:12px;
+      --container:1200px;
+      --text:#222;
+    }
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text);}
+
+    /* NAV */
+    .navbar{max-width:var(--container);margin:28px auto;display:flex;align-items:center;gap:18px;padding:0 18px}
+    .logo{font-weight:800;font-size:34px;color:#111}
+    .location-box input{padding:10px 14px;border:1px solid #ececec;border-radius:999px;width:160px}
+    .search-box{flex:1}
+    .search-box input{width:100%;padding:12px 16px;border-radius:999px;border:1px solid #eee}
+    .auth-buttons{display:flex;gap:12px}
+    .auth-buttons a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
+
+    /* Tabs */
+    .tabs{max-width:var(--container);margin:14px auto 26px;display:flex;gap:22px;padding:0 18px}
+    .tab{padding:14px 22px;border-radius:24px;color:var(--muted);background:#fff;border:1px solid #fff}
+    .tab.active{color:var(--accent);border-bottom:4px solid rgba(255,107,107,0.12);box-shadow:0 2px 6px rgba(0,0,0,0.03)}
+
+    /* Collections Section */
+    .collections-section{max-width:var(--container);margin:12px auto 80px;background:transparent;padding:22px 18px}
+    .collections-section h1{font-size:34px;margin-bottom:8px}
+    .subtitle{color:var(--muted);margin-bottom:18px}
+
+    .collections{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--card-shadow);background:#111}
+    .card img{width:100%;height:320px;object-fit:cover;display:block;filter:brightness(0.85)}
+    .card-overlay{position:absolute;left:16px;bottom:18px;color:#fff}
+    .card-overlay h3{font-size:20px;margin-bottom:6px;text-shadow:0 6px 14px rgba(0,0,0,0.6)}
+    .card-overlay p{opacity:0.9;font-size:13px}
+
+    /* small arrow button on left like carousel */
+    .carousel-left{position:absolute;left:-20px;top:40%;background:#fff;border-radius:999px;padding:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+
+    /* Filters row imitation */
+    .filters{max-width:var(--container);margin:28px auto;padding:0 18px;display:flex;gap:12px}
+    .chip{background:#fff;border:1px solid #eee;padding:10px 14px;border-radius:999px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .collections{grid-template-columns:repeat(2,1fr)}
+      .card img{height:260px}
+    }
+    @media (max-width:560px){
+      .navbar{flex-direction:column;align-items:flex-start;gap:12px}
+      .collections{grid-template-columns:1fr}
+      .card img{height:220px}
+      .search-box{width:100%}
+    }
+
+      /* Footer */
+    .footer{background:#f8f8f8;padding:60px 0;margin-top:60px}
+    .footer-container{max-width:1200px;margin:auto;padding:0 20px}
+    .footer-logo{font-size:36px;font-weight:700;margin-bottom:30px}
+    .footer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:40px}
+    .footer-col h4{font-size:14px;font-weight:700;margin-bottom:14px;color:#1c1c1c}
+    .footer-col a{display:block;color:#696969;text-decoration:none;margin-bottom:8px;font-size:14px}
+    .footer-col a:hover{color:#000}
+    .social-icons span{font-size:20px;margin-right:10px;cursor:pointer}
+    .store-btn{width:140px;margin-top:14px;display:block}
+    .footer-line{margin:40px 0;border:0;border-top:1px solid #dcdcdc}
+    .footer-bottom{font-size:12px;color:#9a9a9a;margin-bottom:20px}
+
+    @media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.footer-grid{grid-template-columns:1fr}.store-btn{width:120px}}
+
+
+
+             /* General Reset and Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        /* Main Container for Page Content */
+        .content-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* --- Filter Bar Styles --- */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto; /* Allow scrolling if filters exceed width */
+            padding-bottom: 10px; /* Space for scrollbar */
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap; /* Prevents text from wrapping */
+            background-color: #fff;
+            color: #555;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #333;
+        }
+
+        /* Special style for the 'selected' button if needed, but keeping it simple for clone */
+        .pubs-bars-btn {
+            background-color: #fcecec; /* Light red/pinkish background */
+            border-color: #e23744;
+            color: #e23744;
+        }
+
+        /* --- 50% Off Banner Styles --- */
+        .banner {
+            background-color: #333; /* Fallback for image area */
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+            height: 200px; /* Fixed height for visual consistency */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 5%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            /* Use a representative image URL or placeholder */
+            background: url("../img/img1.avif") center/cover no-repeat;
+            opacity: 0.8; /* Dim the image slightly */
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 300px;
+        }
+
+        .banner h2 {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+        }
+
+        .banner p {
+            font-size: 16px;
+            margin: 0 0 15px 0;
+        }
+
+        .banner-btn {
+            background-color: #e23744;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .banner-btn:hover {
+            background-color: #d12f3b;
+        }
+
+        /* --- Restaurant List Heading --- */
+        .list-heading {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #1c1c1c;
+        }
+
+        /* --- Restaurant Grid Styles --- */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .restaurant-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image-container {
+            position: relative;
+            height: 200px; /* Fixed height for image area */
+            /* Use unique background for each card as placeholders */
+        }
+
+        .card-image-container.image-1 {
+            background: url('../img/imr2.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-2 {
+            background: url('../img/imr5.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-3 {
+            background: url('../img/imr4.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-4 {
+            /* Placeholder for missing image */
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #bbb;
+        }
+        .card-image-container.image-5 {
+            background: url('../img/imr3.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-6 {
+            background: url('../img/imr6.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-7 {
+            background: url( '../img/imr.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-8 {
+            background: url('../img/imr6.avif') center/cover no-repeat;
+        }
+        .card-image-container.image-9 {
+            background: url('../img/imr4.avif') center/cover no-repeat;
+        }
+
+
+        .offer-tag {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            background-color: #000;
+            color: #fff;
+            padding: 6px 8px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .offer-tag.flat-offer {
+            background-color: #2b7858; /* Greenish color for Flat 10% */
+        }
+
+        .offer-tag.promoted {
+             top: 15px;
+             bottom: auto;
+             background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .card-info {
+            padding: 15px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: #1c1c1c;
+        }
+
+        .card-rating {
+            background-color: #48c479;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .star-icon::before {
+            content: '★';
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 14px;
+            color: #696969;
+            margin-bottom: 5px;
+        }
+
+        .card-cuisine {
+            max-width: 70%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .card-cost, .card-distance {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .card-address {
+            font-size: 12px;
+            color: #909090;
+            margin-top: 10px;
+        }
