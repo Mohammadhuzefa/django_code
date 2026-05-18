@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+ 
+    {% block css %}
+      
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Login Box */
+        .login-container {
+            max-width: 380px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .help {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .help a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .create {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .create a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+{% endblock css %}
+ 
+    {% block content %}
+      
+    
+    <header class="header">
+        <div class="logo">TESLA</div>
+    </header>
+    
+    <div class="login-container">
+        <h1> LOGIN</h1>
+
+          {% if y  %}
+            <div> {{y}} </div>
+            {% endif  %}
+    
+        
+        <form action"{% url 'adminDash'  %}" method="post">
+        {% csrf_token %}
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+            
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required>
+            
+            <button type="submit">LOGIN</button>
+        </form>
+        
+        {% comment %} <p class="help"><a href="#">Forgot password?</a></p> {% endcomment %}
+        <p class="create">New to Tesla? <a href="#">Create Account</a></p>
+    </div>
+    {% endblock content %}
+    
+ 

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+
+    {% block css %}
+
+    
+      
+    {% endblock css %}
+
+    {% block title %}
+    
+    <title>Landing</title>
+    
+    {% endblock title %}
+
+</head>
+<body>
+
+    
+    <!-- content -->
+    
+    {% block content %}
+    
+  
+
+<section style="
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+    padding-top:70px;
+">
+
+    <h1 style="font-size:48px; margin-bottom:10px;">Experience the Future</h1>
+    <p style="font-size:18px; margin-bottom:20px;">Electric cars with cutting-edge technology</p>
+
+    <div>
+        <a href="#" style="
+            margin:5px;
+            padding:12px 25px;
+            text-decoration:none;
+            border-radius:20px;
+            background:#111;
+            color:#fff;
+            font-size:14px;
+            font-weight:bold;
+        ">Order Now</a>
+
+        <a href="#" style="
+            margin:5px;
+            padding:12px 25px;
+            text-decoration:none;
+            border-radius:20px;
+            background:#fff;
+            color:#111;
+            border:1px solid #111;
+            font-size:14px;
+            font-weight:bold;
+        ">Learn More</a>
+    </div>
+
+</section>
+
+    {% endblock content  %}
+    
+    
+    
+    
+</body>
+</html>
